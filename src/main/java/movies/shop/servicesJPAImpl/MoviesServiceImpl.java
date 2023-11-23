@@ -39,7 +39,6 @@ public class MoviesServiceImpl implements MoviesService {
 		}
 		
 		entityManager.persist(newMovie);
-		
 	}
 
 	@Override
@@ -48,6 +47,50 @@ public class MoviesServiceImpl implements MoviesService {
 				+ "true order by m.id desc", Movie.class).getResultList();
 		
 		return movies;
+	}
+	
+	@Override
+	public List<Movie> getMoviesByStartAndEnd(int start, int resultsPerPage) {
+		List<Movie> movies = entityManager.createQuery("select m from Movie m where m.activated = "
+				+ "true and order by m.id desc", Movie.class)
+				.setFirstResult(start)
+				.setMaxResults(resultsPerPage)
+				.getResultList();
+		
+		return movies;
+	}
+	
+	@Override
+	public List<Movie> getMoviesByTitle(String title) {
+		List<Movie> movies = entityManager.createQuery("select m from Movie m where m.activated = "
+				+ "true and lower(m.title) like lower(:title) order by m.id desc", Movie.class)
+				.setParameter("title", "%" + title + "%")
+				.getResultList();
+		
+		return movies;
+	}
+	
+	@Override
+	public List<Movie> getMoviesByTitleAndStartAndEnd(String title, int start, int resultsPerPage) {
+		List<Movie> movies = entityManager.createQuery("select m from Movie m where m.activated = "
+				+ "true and lower(m.title) like lower(:title) order by m.id desc", Movie.class)
+				.setParameter("title", "%" + title + "%")
+				.setFirstResult(start)
+				.setMaxResults(resultsPerPage)
+				.getResultList();
+		
+		return movies;
+	}
+
+	@Override
+	public int getTotalMovies(String title) {
+		
+		System.out.println("XD");
+		
+		Query q = entityManager.createNativeQuery(SQLConstantsMovies.GET_TOTAL_MOVIES);
+		q.setParameter("title", "%" + title + "%");
+		
+		return  Integer.parseInt(q.getSingleResult().toString());
 	}
 
 	@Override
@@ -89,16 +132,6 @@ public class MoviesServiceImpl implements MoviesService {
 		entityManager.merge(movieUpdate);
 	}
 
-	@Override
-	public List<Movie> getMoviesByTitle(String title) {
-		List<Movie> movies = entityManager.createQuery("select m from Movie m where m.activated = "
-				+ "true and lower(m.title) like lower(:title) order by m.id desc", Movie.class)
-				.setParameter("title", "%" + title + "%")
-				.getResultList();
-		
-		return movies;
-	}
-	
 	// Métodos para AJAX
 	
 	@SuppressWarnings("unchecked")
@@ -133,5 +166,5 @@ public class MoviesServiceImpl implements MoviesService {
 		
 		return (Map<String, Object>) nativeQuery.getResultList().get(0);
 	}
-	
+
 }

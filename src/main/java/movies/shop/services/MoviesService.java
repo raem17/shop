@@ -12,7 +12,13 @@ public interface MoviesService {
 	
 	List<Movie> getMovies();
 	
+	List<Movie> getMoviesByStartAndEnd(int start, int resultsPerPage);
+	
 	List<Movie> getMoviesByTitle(String title);
+	
+	List<Movie> getMoviesByTitleAndStartAndEnd(String title, int start, int resultsPerPage);
+	
+	int getTotalMovies(String title);
 	
 	Movie getMovieByID(int id);
 	

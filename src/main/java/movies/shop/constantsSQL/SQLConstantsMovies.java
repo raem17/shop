@@ -25,4 +25,7 @@ public class SQLConstantsMovies {
 	public static final String DELETE_CART_PRODUCT = "DELETE FROM cart_products WHERE cart_id = :cart_id "
 			+ "AND movie_id = :movie_id";
 	
+	public static final String GET_TOTAL_MOVIES = "SELECT COUNT(id) from movies WHERE movies.activated = 1"
+			+ " and movies.title like :title";
+	
 }

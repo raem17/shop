@@ -10,10 +10,15 @@
 	<div th:insert="fragments/general.html :: menu"></div>
 	
 	<!-- Buscador -->
-	<form action="getMoviesByTitle" method="get">
+	<form action="getMovies" method="get">
 		<input type="text" name="title" th:value="${title}"/>
 		<input type="submit" value="Buscar"/>
 	</form>
+	
+	<div class="moviesTotalResultsAdmin">
+		<p>Películas encontradas:</p> 
+		<span th:text="${total}"></span>
+	</div>
 	
 	<div class="card" th:each="m : ${movies}">
 		<img th:src="@{${ '../showMovieImage?id=' + m.id }}"/>
@@ -37,5 +42,11 @@
 		</div>
 	</div>
 
+	<!-- Paginación -->
+	<div class="paginationAdmin">
+		<a th:if="${previous >= 0}" th:href="@{${ 'getMovies?start=' + previous + '&title=' + title }}" >Anterior</a>
+		<a th:if="${next < total}" th:href="@{${ 'getMovies?start=' + next + '&title=' + title}}" >Siguiente</a>
+	</div>
+	
 </body>
 </html>

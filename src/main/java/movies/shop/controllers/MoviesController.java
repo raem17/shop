@@ -27,18 +27,15 @@ public class MoviesController {
 	private GenresService genresService;
 	
 	@RequestMapping("getMovies")
-	public String getMovies(Model model) {
-		List<Movie> movies = moviesService.getMovies();
-		model.addAttribute("movies", movies);
+	public String getMovies(Model model, @RequestParam(name = "title", defaultValue = "") String title, 
+			@RequestParam(name= "start", defaultValue = "0") Integer start) {
 		
-		return "admin/movies";
-	}
-	
-	@RequestMapping("getMoviesByTitle")
-	public String getMoviesByTitle(@RequestParam(name = "title", defaultValue = "") String title, Model model) {
-		List<Movie> movies = moviesService.getMoviesByTitle(title);
-		model.addAttribute("movies", movies);
+		model.addAttribute("movies", moviesService.getMoviesByTitleAndStartAndEnd(title, start, 10));
+		
 		model.addAttribute("title", title);
+		model.addAttribute("next", start + 10);
+		model.addAttribute("previous", start - 10);
+		model.addAttribute("total", moviesService.getTotalMovies(title));
 		
 		return "admin/movies";
 	}
@@ -67,7 +64,7 @@ public class MoviesController {
 	public String deleteMovie (@RequestParam("id") Integer id, Model model) {
 		moviesService.deleteMovieByID(id);
 		
-		return getMovies(model);
+		return getMovies(model, "", 0);
 	}
 	
 	@RequestMapping("editMovie")
@@ -86,7 +83,7 @@ public class MoviesController {
 	public String saveChangesMovie (@Valid Movie movieEdit, Model model) {
 		moviesService.updateMovie(movieEdit);
 		
-		return getMovies(model);
+		return getMovies(model, "", 0);
 	}
 	
 }

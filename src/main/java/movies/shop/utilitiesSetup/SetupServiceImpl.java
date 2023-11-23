@@ -70,6 +70,12 @@ public class SetupServiceImpl implements SetupService {
 		entityManager.persist(m3);
 		entityManager.persist(m4);
 		entityManager.persist(m5);
+		
+		// BORRAR al acabar pruebas
+		for (int i = 0; i < 100; i++) {
+			Movie m = new Movie("Spiderman " + i, i, "Sinopsis de prueba " + i, i, i, drama, true);
+			entityManager.persist(m);
+		}
 	}
 	
 	private void createUsers() {

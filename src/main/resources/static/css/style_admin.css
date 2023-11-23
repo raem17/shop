@@ -198,3 +198,16 @@ a:hover {
 #contenedor {
 	margin: 2rem;
 }
+
+div.moviesTotalResultsAdmin {
+	display: flex;
+	gap: 0.5rem;
+	margin: 2rem;
+}
+
+div.paginationAdmin {
+	display: flex;
+	margin: 2rem;
+	justify-content: center;
+	gap: 1rem;
+}
