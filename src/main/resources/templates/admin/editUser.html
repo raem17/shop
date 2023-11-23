@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style_admin.css}" />
+	<title>Insert title here</title>
+</head>
+
+<body>
+
+	<div th:insert="fragments/general.html :: menu"></div>
+
+    <main>
+        <h2>Editar usuario</h2>
+        
+		<form action="#" th:action="saveChangesUser" th:object="${user}" method="post" enctype="multipart/form-data">
+			<label>Nombre:</label>
+			<input th:field="*{first_name}" required="true"/>
+		
+			<label>Apellidos:</label>
+			<input th:field="*{last_name}" required="true"/>
+		
+			<label>Email:</label>
+			<input th:field="*{email}" required="true"/>
+		
+			<label>Contraseña:</label>
+			<input th:field="*{pass}" required="true"/>
+			
+			<label>Avatar:</label>
+			<img th:src="@{'../showUserImage?id=' + ${user.id}}" />
+			
+			<label>Avatar nuevo:</label>
+			<input th:field="*{avatar}" type="file"/>
+			
+			<input type="hidden" th:field="*{id}"/>
+
+			<input type="submit" value="GUARDAR CAMBIOS" />
+		</form>
+		
+    </main>
+
+</body>
+</html>

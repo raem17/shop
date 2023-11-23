@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style_admin.css}" />
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<div th:insert="fragments/general.html :: menu"></div>
+	
+	<h2>Detalles del pedido</h2>
+	
+	<div class="detallesPedido">
+		
+		<input type="hidden" id="idPedido" th:field="${order.id}">
+		
+		<div class="productosPedido">
+			<h3>Productos del pedido:</h3>
+			
+			<div class="productoPedido" th:each="op : ${order.orderProducts}">
+				<img th:src="@{${ '../showMovieImage?id=' + op.movie.id }}"/>
+				<p>Título: <span th:text="${op.movie.title}"></span></p>
+				<p>Precio unidad: <span th:text="${op.movie.price}"></span>€</p>
+				<p>Cantidad: <span th:text="${op.quantity}"></span></p>
+			</div>
+		</div>
+		
+		<div class="datosEnvio">
+			<h3>Datos de envío:</h3>
+			<p>Nombre: <span th:text="${order.firstName}"></span></p>
+			<p>Apellidos: <span th:text="${order.lastName}"></span></p>
+			<p>Email: <span th:text="${order.email}"></span></p>
+			<p>Teléfono: <span th:text="${order.phoneNumber}"></span></p>
+			<p>Dirección: <span th:text="${order.address}"></span></p>
+			<p>Detalles de direción: <span th:text="${order.addressDetails}"></span></p>
+			<p>Código postal: <span th:text="${order.postalCode}"></span></p>
+			<p>Localidad: <span th:text="${order.town}"></span></p>
+			<p>Provincia: <span th:text="${order.province}"></span></p>
+			<p>Notas de envío: <span th:text="${order.shippingNotes}"></span></p>
+		</div>
+		
+		<div class="datosContacto">
+			<h3>Datos de contacto:</h3>
+			<p>Persona de contacto: <span th:text="${order.contactName}"></span></p>
+			<p>Teléfono de contacto: <span th:text="${order.contactPhone}"></span></p>
+			<p>Email de contacto: <span th:text="${order.contactEmail}"></span></p>
+		</div>
+		
+		<div class="datosPago">
+			<h3>Datos de pago:</h3>
+			<p>Tipo de tarjeta: <span th:text="${order.cardType}"></span></p>
+			<p>Titular: <span th:text="${order.cardHolder}"></span></p>
+			<p>Número: <span th:text="${order.cardNumber}"></span></p>
+			<p>Caducidad: <span th:text="${order.cardExpiration}"></span></p>
+		</div>
+		
+		<div class="datosEstado">
+			<h3>Estado del pedido:</h3>
+			
+	        <select id="select_estado">
+                <option th:each="status : ${statuses}" th:value="${status.key}" th:text="${status.value}" 
+                	th:selected="${status.key == order.status}"></option>
+	        </select>
+		</div>
+	
+	</div>
+
+	<script src="../librerias_js/jquery.js"></script>
+	
+	<script>
+		$("#select_estado").change(function(e) {
+			let estado = $(this).find(":selected").val()
+			let idPedido = $("#idPedido").val()
+			
+			$.post("webServiceOrders/updateOrderStatus", {id: idPedido, newStatus: estado}).done(function(res) {
+				if (res == "ok") {
+					alert("Se ha cambiado el estado correctamente.")
+					
+				} else {
+					alert("Algo ha ido mal.")
+				}
+			})
+			
+		})
+		
+	</script>
+
+</body>
+</html>

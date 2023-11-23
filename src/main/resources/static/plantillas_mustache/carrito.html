@@ -1,0 +1,38 @@
+<div style="text-align: center;">Carrito de la compra</div>
+
+<main>
+
+	<div id="productos">
+		{{#.}}
+	    <div class="producto">
+		    <label>Título: {{title}}</label>
+			<img src="showMovieImage?id={{movie_id}}" height="40px"/>
+	        <span class="precio" data-precio="{{movie_price}}">Precio: {{movie_price}} &euro;</span>
+	        
+	        <label>Cantidad:</label>
+	       	<div>
+	            <button class="restar">-</button>
+	            <span class="cantidad" idMovie="{{movie_id}}">{{quantity}}</span>
+	            <button class="sumar">+</button>
+	        </div>
+	
+			<div>
+				<span>Subtotal:</span>
+	        	<span class="subtotal">0</span> <span> €</span>
+			</div>
+	        
+	        <a href="#" id="eliminarProducto" idMovie="{{movie_id}}">Eliminar producto</a>
+	    </div>
+	    {{/.}}
+	</div>
+	
+	<div id="carrioTotalContainer">
+	    <span>Total:</span>
+	    <span id="total">0.00</span> <span> €</span>
+	</div>
+
+</main>
+
+<div style="text-align: center;font-size: 1.5rem;padding: 0.5rem;">
+	<a href="#" id="realizar_pedido">Realizar pedido</a>
+</div>

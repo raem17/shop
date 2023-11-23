@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--<html xmlns:th="http://www.thymeleaf.org" >-->
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div th:fragment="menu">
+	<header>
+		<h2 th:text="#{titulo.bienvenida}"></h2>
+		<a href="../">Volver a la parte pública</a>
+	</header>
+	
+	<nav>
+		<a href="getMovies">Gestionar películas</a> 
+		<a href="getGenres">Gestionar géneros</a> 
+		<a href="getUsers">Gestionar usuarios</a>
+		<a href="getOrders">Gestionar pedidos</a>
+		
+		<a href="registerMovie">Crear una película</a>
+		<a href="registerGenre">Crear un género</a>
+		<a href="registerUser">Crear un usuario</a>
+		
+		<a href="../logoutAdmin">Cerrar sesión admin</a>
+	</nav>
+	
+	<div style="margin:1.5rem;display: flex;gap: 1rem;justify-content: end;">
+		<a href="?idioma=es">Español</a>
+		<a href="?idioma=en">Inglés</a>
+	</div>
+	
+</div>
+
+</body>
+</html>

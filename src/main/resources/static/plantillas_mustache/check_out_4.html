@@ -1,0 +1,51 @@
+<div>Resumen del pedido</div>
+
+<div class="resumenPedido">
+	<div class="productosPedido">
+		<p>Productos del pedido:</p>
+		
+		{{#cartProducts}}
+			<div class="productoPedido">
+				<!-- Quitar style y darle estilos -->
+				<img style="height: 10rem;" src="showMovieImage?id={{movie_id}}">
+				<p>Título: {{title}}</p>
+				<p>Precio unidad: {{movie_price}}€</p>
+				<p>Cantidad: {{quantity}}</p>
+			</div>
+		{{/cartProducts}}
+	</div>
+	
+	<div class="datosEnvio">
+		<p>Datos de envío:</p>
+		
+		<p>Nombre: {{firstName}}</p>
+		<p>Apellidos: {{lastName}}</p>
+		<p>Email: {{email}}</p>
+		<p>Teléfono: {{phoneNumber}}</p>
+		<p>Dirección: {{address}}</p>
+		<p>Detalles de direción: {{addressDetails}}</p>
+		<p>Código postal: {{postalCode}}</p>
+		<p>Localidad: {{town}}</p>
+		<p>Provincia: {{province}}</p>
+	</div>
+	
+	<div class="datosContacto">
+		<p>Datos de contacto:</p>
+		
+		<p>Notas de envío: {{shippingNotes}}</p>
+		<p>Nombre de contacto: {{contactName}}</p>
+		<p>Teléfono de contacto: {{contactPhone}}</p>
+		<p>Email de contacto: {{contactEmail}}</p>
+	</div>
+	
+	<div class="datosPago">
+		<p>Datos de pago:</p>
+		
+		<p>Tipo de tarjeta: {{cardType}}</p>
+		<p>Titular: {{cardHolder}}</p>
+		<p>Número: {{cardNumber}}</p>
+		<p>Caducidad: {{cardExpiration}}</p>
+	</div>
+	
+	<button id="boton_confirmar_pedido">REALIZAR PEDIDO</button>
+</div>

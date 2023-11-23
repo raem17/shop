@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style_admin.css}" />
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<div th:insert="fragments/general.html :: menu"></div>
+	
+	<!-- Buscador -->
+	<form action="getMoviesByTitle" method="get">
+		<input type="text" name="title" th:value="${title}"/>
+		<input type="submit" value="Buscar"/>
+	</form>
+	
+	<div class="card" th:each="m : ${movies}">
+		<img th:src="@{${ '../showMovieImage?id=' + m.id }}"/>
+		
+		<div class="card-desc">
+	      	<p><span th:text="${m.title}"></span></p>
+	
+	      	<ul>
+	          	<li>Sinopsis: <span th:text="${m.synopsis}"></span></li>
+	          	<li>Año de lanzamiento: <span th:text="${m.release_year}"></span></li>
+	          	<li>Género: <span th:text="${m.genre.name}"></span></li>
+	          	<li>Duración: <span th:text="${m.length_min}"></span> min.</li>
+	          	<li class="price">Precio: <span th:text="${m.price}"></span> €</li>
+	      	</ul>
+	      	
+	      	<div class="movie-options">
+	          	<a th:href="@{${ 'deleteMovie?id=' + m.id }}" onclick="return confirm('¿Seguro?')">Eliminar</a>
+				<a th:href="@{${ 'editMovie?id=' + m.id }}">Editar</a>
+	      	</div>
+	
+		</div>
+	</div>
+
+</body>
+</html>

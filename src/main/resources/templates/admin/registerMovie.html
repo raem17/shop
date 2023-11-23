@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style_admin.css}" />
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<div th:insert="fragments/general.html :: menu"></div>
+
+	<main>
+        <h2>Crear película</h2>
+		<form action="#" th:action="saveMovie" th:object="${newMovie}" method="post" enctype="multipart/form-data">
+			<label>Título:</label>
+			<input th:field="*{title}" required="true"/>
+			<span style="color: red;" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+			
+			<label>Precio:</label>
+			<input th:field="*{price}" required="true" step=".01"/>
+			<span style="color: red;" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+			
+			<label>Sinopsis:</label>
+			<textarea th:field="*{synopsis}" rows="3" cols="15" required="true"/>
+			
+			<label>Año de lanzamiento:</label>
+			<input th:field="*{release_year}" required="true"/>
+			
+			<label>Género:</label>
+			<select th:field="*{idGenre}" required="true">
+				<option th:each="g : ${genres}" th:text="${g.name}" th:value="${g.id}"/>		
+			</select>
+			
+			<label>Duración:</label>
+			<input th:field="*{length_min}" required="true"/>
+			
+			<label>Imagen:</label>
+			<input th:field="*{imageUploaded}" type="file"/>
+			
+			<input type="submit" value="GUARDAR CAMBIOS" />
+		</form>
+		
+	</main>
+
+</body>
+</html>

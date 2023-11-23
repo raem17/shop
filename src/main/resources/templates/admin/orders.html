@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style_admin.css}" />
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<div th:insert="fragments/general.html :: menu"></div>
+	
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Email de cliente</th>
+			<th>Dirección</th>
+			<th>Estado</th>
+		</tr>
+		
+		<tr class="pedido" th:each="o : ${orders}" >
+			<td><span th:text="${o.id}"></span></td>
+			<td><span th:text="${o.email}"></span></td>
+			<td><span th:text="${o.address}"></span></td>
+			<td><span th:text="${o.status}"></span></td>
+			
+			<td><a th:href="@{${ 'viewOrderDetails?id=' + o.id }}">Ver pedido completo</a></td>
+		</tr>
+		
+	</table>
+
+</body>
+</html>

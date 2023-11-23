@@ -1,0 +1,30 @@
+<!-- lo siguiente es la forma de indicar a mustache
+de que haga lo indicado con cada elemento de un array recibido -->
+
+<div>
+	<label>Buscador:</label> 
+	<input type="text" id="searchTitle"/>
+	<button id="buttonSearchMovie">Buscar</button>	
+</div>
+
+{{#.}}
+<div class="card">
+    <img src="showMovieImage?id={{id}}">
+    <div class="card-desc">
+        <p>{{title}}</p>
+    
+    	<!-- Este ul podrá contener más datos -->
+        <ul>
+            <li>Sinopsis: {{synopsis}}.</li>
+            <li>Precio: {{price}} €.</li>
+        </ul>
+        
+        <div class="movie-options">
+          	<a href="#" class="enlace_comprar_listado_principal" id-producto="{{id}}" >Comprar</a>
+          	<a href="#" class="enlace_ver_detalles_movie" id-producto="{{id}}" >Ver detalles</a>
+      	</div>
+      	
+    </div>
+    
+</div>
+{{/.}}

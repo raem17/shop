@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<title>Inicio</title>
+</head>
+
+<body>
+
+<header>
+	<h2>Bienvenido a la parte pública de la tienda</h2>
+	<a href="admin/getMovies">Acceso a administración</a>
+	
+	<div id="mensaje_login" style="margin: 1rem">Usuario no identificado</div>
+</header>
+
+<nav>
+	<a href="#" id="inicio" >Inicio</a>	
+	<a href="#" id="movies" >Listado de películas</a>	
+	<a href="#" id="registrarme" >Registro</a>	
+	<a href="#" id="login" >Iniciar sesión</a>	
+	<a href="#" id="#" >Ver mis pedidos</a>	
+	<a href="#" id="#" >Mis datos</a>	
+	<a href="#" id="logout" >Cerrar sesión</a>	
+	<a href="#" id="carrito" >Carrito</a>	
+</nav>
+
+
+
+<!-- Contenedor de plantillas -->
+<div id="contenedor"></div>
+
+<!-- Scripts -->
+<script src="librerias_js/jquery.js"></script>
+<script src="librerias_js/mustache.js"></script>
+<script src="librerias_js/js.cookie.min.js"></script>
+
+<script src="javascript/globales.js"></script>
+<script src="javascript/carga_plantillas.js"></script>
+<script src="javascript/sesionUsuario.js"></script>
+<script src="javascript/funciones_menu.js"></script>
+<script src="javascript/pasos_checkout.js"></script>
+
+
+</body>
+</html>
