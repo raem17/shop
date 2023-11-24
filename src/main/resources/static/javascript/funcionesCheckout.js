@@ -88,6 +88,9 @@ function checkout_paso_3_aceptar() {
 		let html = Mustache.render(plantillaCheckout_4, resumenPedido)
 		
 		$("#contenedor").html(html)
+		
+		mostrarSubtotalYTotalEnResumenPedido()
+		
 		$("#boton_confirmar_pedido").click(function() {
 			$.ajax("webServiceOrders/step4", {
 				success: function(res) {

@@ -75,3 +75,19 @@ function actualizarCantidadesCarritoEnBD() {
 	    $.post("webServiceCart/updateProductQuantity", { movieID: idMovie, quantity: cantidad })
 	});
 }
+
+function mostrarSubtotalYTotalEnResumenPedido() {
+    let total = 0;
+
+    $('.productoPedido').each(function() {
+        let cantidad = parseFloat($(this).find('.cantidad').data('cantidad'));
+        let precio = parseFloat($(this).find('.precio').data('precio'));
+
+        let subtotal = cantidad * precio;
+        $(this).find('.subtotal').text(subtotal.toFixed(2));
+
+        total += subtotal;
+    });
+
+    $('#totalPedido').text(total.toFixed(2));
+}
