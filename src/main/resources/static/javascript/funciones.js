@@ -51,7 +51,7 @@ function actualizarSubtotalYTotalEnCarrito() {
     let total = 0;
 
     $('.producto').each(function() {
-        let cantidad = parseFloat($(this).find('.cantidad').text());
+        let cantidad = parseFloat($(this).find('.cantidad').data('cantidad'));
         let precio = parseFloat($(this).find('.precio').data('precio'));
 
         let subtotal = cantidad * precio;
@@ -69,8 +69,8 @@ function actualizarCantidadesCarritoEnBD() {
 	// Dejar el argumento index, sino da error
 	// Se actualiza la cantidad de cada producto
 	spans.each(function(index, span) {
-		let idMovie = $(span).attr("idMovie");
-	    let cantidad = $(span).text();
+		let idMovie = $(span).data('id');
+	    let cantidad = $(span).data('cantidad');
 	    
 	    $.post("webServiceCart/updateProductQuantity", { movieID: idMovie, quantity: cantidad })
 	});

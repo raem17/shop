@@ -1,6 +1,7 @@
 <div>Resumen del pedido</div>
 
 <div class="resumenPedido">
+	
 	<div class="productosPedido">
 		<p>Productos del pedido:</p>
 		
@@ -9,10 +10,15 @@
 				<!-- Quitar style y darle estilos -->
 				<img style="height: 10rem;" src="showMovieImage?id={{movie_id}}">
 				<p>Título: {{title}}</p>
-				<p>Precio unidad: {{movie_price}}€</p>
-				<p>Cantidad: {{quantity}}</p>
+				<p class="precio" data-precio="{{movie_price}}">Precio unidad: {{movie_price}}€</p>
+				<p class="cantidad" data-cantidad="{{quantity}}">Cantidad: {{quantity}}</p>
+				
+				<p>Subtotal: <span class="subtotal">5</span> €</p>
 			</div>
 		{{/cartProducts}}
+		
+		<p>Total: <span id="totalPedido">10</span> €</p>
+		
 	</div>
 	
 	<div class="datosEnvio">

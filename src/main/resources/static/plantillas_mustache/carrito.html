@@ -12,14 +12,11 @@
 	        <label>Cantidad:</label>
 	       	<div>
 	            <button class="restar">-</button>
-	            <span class="cantidad" idMovie="{{movie_id}}">{{quantity}}</span>
+	            <span class="cantidad" data-id="{{movie_id}}" data-cantidad="{{quantity}}">{{quantity}}</span>
 	            <button class="sumar">+</button>
 	        </div>
 	
-			<div>
-				<span>Subtotal:</span>
-	        	<span class="subtotal">0</span> <span> €</span>
-			</div>
+			<p>Subtotal: <span class="subtotal">0</span> €</p>
 	        
 	        <a href="#" id="eliminarProducto" idMovie="{{movie_id}}">Eliminar producto</a>
 	    </div>
