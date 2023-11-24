@@ -27,22 +27,27 @@
 	<a href="#" id="carrito" >Carrito</a>	
 </nav>
 
-
-
-<!-- Contenedor de plantillas -->
+<!-- Contenedor de plantillas Mustache -->
 <div id="contenedor"></div>
 
-<!-- Scripts -->
+<!-- Librerías -->
 <script src="librerias_js/jquery.js"></script>
 <script src="librerias_js/mustache.js"></script>
 <script src="librerias_js/js.cookie.min.js"></script>
 
+<!-- Scripts -->
 <script src="javascript/globales.js"></script>
+<script src="javascript/funciones.js"></script>
 <script src="javascript/carga_plantillas.js"></script>
-<script src="javascript/sesionUsuario.js"></script>
-<script src="javascript/funciones_menu.js"></script>
-<script src="javascript/pasos_checkout.js"></script>
+<script src="javascript/setListenersMenu.js"></script>
+<script src="javascript/setListenersContenedor.js"></script>
+<script src="javascript/funcionesCheckout.js"></script>
 
+<script>
+	$(document).ready(function() {
+		gestionarSesionUsuario();
+	});
+</script>
 
 </body>
 </html>
