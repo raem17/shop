@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -51,8 +52,9 @@ public class MoviesController {
 	}
 	
 	@RequestMapping("saveMovie")
-	public String saveMovie (@Valid Movie newMovie, BindingResult validationsResults) {
+	public String saveMovie (@ModelAttribute("newMovie") @Valid Movie newMovie, BindingResult validationsResults, Model model) {
 		if (validationsResults.hasErrors()) {
+			model.addAttribute("genres", genresService.getGenres());
 			return "admin/registerMovie";
 		}
 		
@@ -80,7 +82,7 @@ public class MoviesController {
 	}
 	
 	@RequestMapping("saveChangesMovie")
-	public String saveChangesMovie (@Valid Movie movieEdit, Model model) {
+	public String saveChangesMovie (Movie movieEdit, Model model) {
 		moviesService.updateMovie(movieEdit);
 		
 		return getMovies(model, "", 0);
