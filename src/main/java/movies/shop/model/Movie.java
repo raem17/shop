@@ -62,32 +62,18 @@ public class Movie {
 	
 	private boolean activated;
 	
+	// Nuevos atributos
+	private String director;
+	private String country;
+	private String ean;
+	private String editor;
+	
 	public Movie() {
 		// TODO Auto-generated constructor stub
 	}
-
-	/**
-	 * Constructor with all data.
-	 * @param title
-	 * @param price
-	 * @param synopsis
-	 * @param release_year
-	 * @param id
-	 * @param length_min
-	 */
-	public Movie(String title, double price, String synopsis, int release_year, int id, int length_min, Genre genre) {
-		super();
-		this.title = title;
-		this.price = price;
-		this.synopsis = synopsis;
-		this.release_year = release_year;
-		this.id = id;
-		this.length_min = length_min;
-		this.genre = genre;
-	}
 	
 	/**
-	 * Constructor without id.
+	 * Constructor for Setup (old).
 	 * @param title
 	 * @param price
 	 * @param synopsis
@@ -103,6 +89,37 @@ public class Movie {
 		this.length_min = length_min;
 		this.genre = genre;
 		this.activated = activated;
+	}
+	
+	/**
+	 * Constructor for Setup (new).
+	 * @param title
+	 * @param price
+	 * @param synopsis
+	 * @param release_year
+	 * @param genre
+	 * @param length_min
+	 * @param activated
+	 * @param director
+	 * @param country
+	 * @param ean
+	 * @param editor
+	 * @param actors
+	 */
+	public Movie( String title, double price, String synopsis, int release_year, Genre genre, int length_min, boolean activated, 
+			String director, String country, String ean, String editor) {
+		super();
+		this.title = title;
+		this.price = price;
+		this.synopsis = synopsis;
+		this.release_year = release_year;
+		this.genre = genre;
+		this.length_min = length_min;
+		this.activated = activated;
+		this.director = director;
+		this.country = country;
+		this.ean = ean;
+		this.editor = editor;
 	}
 
 	public String getTitle() {
@@ -193,19 +210,51 @@ public class Movie {
 		this.length_min = length_min;
 	}
 
-	@Override
-	public String toString() {
-		return "Movie [title=" + title + ", price=" + price + ", cartProduct=" + cartProduct + ", synopsis=" + synopsis
-				+ ", release_year=" + release_year + ", genre=" + genre + ", idGenre=" + idGenre + ", imageUploaded="
-				+ imageUploaded + ", id=" + id + ", length_min=" + length_min + "]";
-	}
-
 	public boolean isActivated() {
 		return activated;
 	}
 
 	public void setActivated(boolean activated) {
 		this.activated = activated;
+	}
+
+	public String getDirector() {
+		return director;
+	}
+
+	public void setDirector(String director) {
+		this.director = director;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getEan() {
+		return ean;
+	}
+
+	public void setEan(String ean) {
+		this.ean = ean;
+	}
+
+	public String getEditor() {
+		return editor;
+	}
+
+	public void setEditor(String editor) {
+		this.editor = editor;
+	}
+
+	@Override
+	public String toString() {
+		return "Movie [title=" + title + ", price=" + price + ", synopsis=" + synopsis + ", release_year="
+				+ release_year + ", genre=" + genre.getName() + ", id=" + id + ", length_min=" + length_min + ", activated="
+				+ activated + ", director=" + director + ", country=" + country + ", ean=" + ean + ", editor=" + editor + "]";
 	}
 
 }

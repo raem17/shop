@@ -84,13 +84,10 @@ public class MoviesServiceImpl implements MoviesService {
 
 	@Override
 	public int getTotalMovies(String title) {
-		
-		System.out.println("XD");
-		
 		Query q = entityManager.createNativeQuery(SQLConstantsMovies.GET_TOTAL_MOVIES);
 		q.setParameter("title", "%" + title + "%");
 		
-		return  Integer.parseInt(q.getSingleResult().toString());
+		return Integer.parseInt(q.getSingleResult().toString());
 	}
 
 	@Override

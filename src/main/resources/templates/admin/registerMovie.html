@@ -23,8 +23,17 @@
 			<label>Sinopsis:</label>
 			<textarea th:field="*{synopsis}" rows="3" cols="15" required="true"/>
 			
-			<label>Año de lanzamiento:</label>
-			<input th:field="*{release_year}" required="true"/>
+			<label>Director:</label>
+			<input th:field="*{director}" required="true"/>
+			
+			<label>País:</label>
+			<input th:field="*{country}" required="true"/>
+			
+			<label>EAN:</label>
+			<input th:field="*{ean}" required="true"/>
+			
+			<label>Editor/ra:</label>
+			<input th:field="*{editor}" required="true"/>
 			
 			<label>Género:</label>
 			<select th:field="*{idGenre}" required="true">
