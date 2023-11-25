@@ -76,9 +76,9 @@ public class SetupServiceImpl implements SetupService {
 	}
 	
 	private void createUsers() {
-		User u1 = new User("Manolo", "Pérez", "manolo@gmail.com", "manoli1976", true);
-		User u2 = new User("Rafael", "Alvarado", "rafaavl@gmail.com", "pepe4564", true);
-		User u3 = new User("Teodoro", "Robles", "teorobles@gmail.com", "lalanda3756", true);
+		User u1 = new User("Manolo", "Pérez", "manolo@gmail.com", "Manoli1976", true);
+		User u2 = new User("Rafael", "Alvarado", "rafaavl@gmail.com", "Pepe4564", true);
+		User u3 = new User("Teodoro", "Robles", "teorobles@gmail.com", "Lalanda3756", true);
 		
 		// imagenes
 		u1.setImageInBytes(copyBaseImage("http://localhost:8080/baseImagesUsers/u1.jpg"));

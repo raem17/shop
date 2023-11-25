@@ -9,6 +9,6 @@ public class ShopApplication {
 	public static void main(String[] args) {
 		// añadir espacio y borrar para compilar de nuevo y quitar error de url
 		SpringApplication.run(ShopApplication.class, args);
-	} 
+	}
 
 }

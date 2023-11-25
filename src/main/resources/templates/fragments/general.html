@@ -8,12 +8,12 @@
 
 <div th:fragment="menu">
 	<header>
-		<h2 th:text="#{titulo.bienvenida}"></h2>
-		<a href="../">Volver a la parte pública</a>
+		<h2 th:text="#{title.welcome}"></h2>
+		<a href="../" th:text="#{link.backToPublic}"></a>
 	</header>
 	
 	<nav>
-		<a href="getMovies">Gestionar películas</a> 
+		<a href="getMovies" th:text="#{link.menu.manageMovies}"></a> 
 		<a href="getGenres">Gestionar géneros</a> 
 		<a href="getUsers">Gestionar usuarios</a>
 		<a href="getOrders">Gestionar pedidos</a>
