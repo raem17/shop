@@ -58,41 +58,27 @@ public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private int length_min;
 	
 	private boolean activated;
 	
-	// Nuevos atributos
 	private String director;
+	
 	private String country;
+	
 	private String ean;
+	
 	private String editor;
+	
+	// Constructors
 	
 	public Movie() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	/**
-	 * Constructor for Setup (old).
-	 * @param title
-	 * @param price
-	 * @param synopsis
-	 * @param release_year
-	 * @param length_min
-	 */
-	public Movie(String title, double price, String synopsis, int release_year, int length_min, Genre genre, boolean activated) {
-		super();
-		this.title = title;
-		this.price = price;
-		this.synopsis = synopsis;
-		this.release_year = release_year;
-		this.length_min = length_min;
-		this.genre = genre;
-		this.activated = activated;
-	}
-	
-	/**
-	 * Constructor for Setup (new).
+	 * Constructor for Setup
 	 * @param title
 	 * @param price
 	 * @param synopsis
@@ -106,7 +92,7 @@ public class Movie {
 	 * @param editor
 	 * @param actors
 	 */
-	public Movie( String title, double price, String synopsis, int release_year, Genre genre, int length_min, boolean activated, 
+	public Movie(String title, double price, String synopsis, int release_year, Genre genre, int length_min, boolean activated, 
 			String director, String country, String ean, String editor) {
 		super();
 		this.title = title;

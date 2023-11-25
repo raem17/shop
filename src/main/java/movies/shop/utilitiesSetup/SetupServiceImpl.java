@@ -42,20 +42,23 @@ public class SetupServiceImpl implements SetupService {
 		// Se crean las movies
 		Movie m1 = new Movie("Kill Bill", 5.99, "Mamba Negra es una asesina que, el día de su boda, es atacada por los miembros de"
 				+ " la banda de su jefe, Bill. Sin embargo consigue sobrevivir, aunque queda en coma. Cinco años después despierta, con "
-				+ "un deseo de venganza", 2003, 247, accion, true);
+				+ "un deseo de venganza", 2003, accion, 247, true, "Quentin Tarantino", "Estados Unidos", "065935846524", "Miramax Films");
 		
-		Movie m2 = new Movie("Django Unchained", 8.99, "La D es muda. La venganza no lo será", 2012, 165, aventura, true);
+		Movie m2 = new Movie("Django Unchained", 8.99, "La D es muda. La venganza no lo será", 2012, aventura, 165, true, 
+				"Quentin Tarantino", "Estados Unidos", "065935593005", "The Weinstein Company");
 		
 		Movie m3 = new Movie("Spiderman 2", 1.99, "Como si Peter Parker no tuviera suficiente con sus propios problemas, "
 				+ "estudios y su amor por Mary Jane, ahora tiene que salvar a la ciudad de un nuevo villano, el Doctor Octopus", 
-				2004, 127, superheroes, true);
+				2004, superheroes, 127, true, "Sam Raimi", "Estados Unidos", "5035822480930", "Sony Pictures Entertainment");
 		
 		Movie m4 = new Movie("Spiderman 3", 2.99, "Peter Parker sufre una terrible transformación cuando su traje se vuelve negro "
 				+ "y libera su personalidad oscura y vengativa. Afrontará el mayor desafío de su vida al tener que redescubrir la "
-				+ "humildad y compasión que lo hacen ser quien es: un héroe", 2007, 139, comedia, true);
+				+ "humildad y compasión que lo hacen ser quien es: un héroe", 2007, comedia, 139, true, "Sam Raimi", "Estados Unidos",
+				"5035822558034", "Sony Pictures Entertainment");
 		
 		Movie m5 = new Movie("Pulp Fiction", 1, "Historias de dos matones, un boxeador y una pareja de atracadores de "
-				+ "poca monta envueltos en una violencia espectacular e irónica", 1994, 165, drama, true);
+				+ "poca monta envueltos en una violencia espectacular e irónica", 1994, drama, 165, true, "Quentin Tarantino", 
+				"Estados Unidos", "5017239191964", "Miramax Films");
 		
 		// imagenes
 		m1.setImageInBytes(copyBaseImage("http://localhost:8080/baseImages/kill_bill.jpg"));
