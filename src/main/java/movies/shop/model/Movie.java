@@ -25,9 +25,10 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "movies")
 public class Movie {
 	
-	@Size(min = 1, max = 50, message = "El título debe tener entre 1 y 50 caracteres.")
-	@NotBlank(message = "El título no puede estar vacío.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ]+", message = "El título solo puede contener letras y números.")
+	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ç\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres ¡!&()¿?ç-:")
 	private String title;
 	
 	@NotNull(message = "Debes introducir un número.")
@@ -38,8 +39,15 @@ public class Movie {
 	@OneToOne
 	private CartProduct cartProduct;
 	
+	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ç.,\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres ¡!&()¿?ç.,-:")
 	@Column(columnDefinition = "TEXT")
 	private String synopsis;
+	
+	@NotNull(message = "Debes introducir un número.")
+	@Min(value = 1895, message = "El año debe estar entre 1895 y 2500.")
+	@Max(value = 2500, message = "El año debe estar entre 1895 y 2500.")
 	private int release_year;
 	
 	@ManyToOne(cascade = {CascadeType.MERGE}, targetEntity = Genre.class, optional = false, fetch = FetchType.EAGER)
@@ -59,16 +67,33 @@ public class Movie {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@NotNull(message = "Debes introducir un número.")
+	@Min(value = 1, message = "La duración debe estar entre 1 y 60000 minutos.")
+	@Max(value = 60000 , message = "La duración debe estar entre 1 y 60000 minutos.")
 	private int length_min;
 	
 	private boolean activated;
 	
+	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres ç-")
 	private String director;
 	
+	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres ç-")
 	private String country;
 	
+	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
+	@Pattern(regexp = "^[0-9]{13}$", message = "El campo EAN debe contener exactamente 13 dígitos numéricos.")
 	private String ean;
 	
+	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres ç-")
 	private String editor;
 	
 	// Constructors

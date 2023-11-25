@@ -11,12 +11,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "genres")
 public class Genre {
 	
+	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres ç-")
 	private String name;
+	
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ç.,\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres ¡!&()¿?ç.,-:")
 	private String description;
 	
 	// Cascade indica que se puede propagar una operacion desde el dato actual

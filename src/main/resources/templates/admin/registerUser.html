@@ -13,20 +13,34 @@
         <h2>Crear usuario</h2>
         
 		<form action="#" th:action="saveUser" th:object="${newUser}" method="post" enctype="multipart/form-data">
-			<label>Nombre:</label>
-			<input th:field="*{first_name}" required="true"/>
-		
-			<label>Apellidos:</label>
-			<input th:field="*{last_name}" required="true"/>
-		
-			<label>Email:</label>
-			<input th:field="*{email}" required="true"/>
-		
-			<label>Contraseña:</label>
-			<input th:field="*{pass}" required="true"/>
+			<div class="adminFormField">
+				<label>Nombre:</label>
+				<input th:field="*{first_name}" required="true"/>
+				<span th:if="${#fields.hasErrors('first_name')}" th:errors="*{first_name}"></span>
+			</div>
 			
-			<label>Avatar:</label>
-			<input th:field="*{avatar}" type="file"/>
+			<div class="adminFormField">
+				<label>Apellidos:</label>
+				<input th:field="*{last_name}" required="true"/>
+				<span th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}"></span>
+			</div>
+			
+			<div class="adminFormField">
+				<label>Email:</label>
+				<input th:field="*{email}" required="true"/>
+				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+			</div>
+			
+			<div class="adminFormField">
+				<label>Contraseña:</label>
+				<input th:field="*{pass}" required="true"/>
+				<span th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}"></span>
+			</div>
+			
+			<div class="adminFormField">
+				<label>Avatar:</label>
+				<input th:field="*{avatar}" type="file"/>
+			</div>
 			
 			<input type="submit" value="GUARDAR CAMBIOS" />
 		</form>

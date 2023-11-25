@@ -2,10 +2,13 @@ package movies.shop.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import movies.shop.model.User;
@@ -44,9 +47,11 @@ public class UsersController {
 	}
 	
 	@RequestMapping("saveChangesUser")
-	public String saveChangesUser(User user, Model model) {
+	public String saveChangesUser(@ModelAttribute("user") @Valid User user, BindingResult validationsResults, Model model) {
+		if (validationsResults.hasErrors()) {
+			return "admin/editUser";
+		}
 		usersService.updateUser(user);
-		
 		return getUsers(model);
 	}
 	
@@ -60,9 +65,12 @@ public class UsersController {
 	}
 	
 	@RequestMapping("saveUser")
-	public String saveUser(User newUser, Model model) {
-		usersService.createUser(newUser);
+	public String saveUser(@ModelAttribute("newUser") @Valid User newUser, BindingResult validationsResults, Model model) {
+		if (validationsResults.hasErrors()) {
+			return "admin/registerUser";
+		}
 		
+		usersService.createUser(newUser);
 		return "admin/registerUserOk";
 	}
 

@@ -44,7 +44,8 @@ public class MoviesController {
 	@RequestMapping("registerMovie")
 	public String registerMovie (Model model) {
 		Movie newMovie = new Movie();
-
+		newMovie.setPrice(1);
+		
 		model.addAttribute("newMovie", newMovie);
 		model.addAttribute("genres", genresService.getGenres());
 		
@@ -73,18 +74,20 @@ public class MoviesController {
 	public String editMovie (@RequestParam("id") Integer id, Model model) {
 		Movie movie = moviesService.getMovieByID(id);
 		
-		List<Genre> genres = genresService.getGenres();
-		
 		model.addAttribute("movieEdit", movie);
-		model.addAttribute("genres", genres);
+		model.addAttribute("genres", genresService.getGenres());
 		
 		return "admin/editMovie";
 	}
 	
 	@RequestMapping("saveChangesMovie")
-	public String saveChangesMovie (Movie movieEdit, Model model) {
-		moviesService.updateMovie(movieEdit);
+	public String saveChangesMovie (@ModelAttribute("movieEdit") @Valid Movie movieEdit, BindingResult validationsResults, Model model) {
+		if (validationsResults.hasErrors()) {
+			model.addAttribute("genres", genresService.getGenres());
+			return "admin/editMovie";
+		}
 		
+		moviesService.updateMovie(movieEdit);
 		return getMovies(model, "", 0);
 	}
 	

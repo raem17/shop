@@ -1,8 +1,12 @@
 package movies.shop.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import movies.shop.model.Genre;
@@ -39,9 +43,12 @@ public class GenresController {
 	}
 	
 	@RequestMapping("saveChangesGenre")
-	public String saveChangesGenre(Genre genre, Model model) {
-		genresService.updateGenre(genre);
+	public String saveChangesGenre(@ModelAttribute("genre") @Valid Genre genre, BindingResult validationsResults, Model model) {
+		if (validationsResults.hasErrors()) {
+			return "admin/editGenre";
+		}
 		
+		genresService.updateGenre(genre);
 		return getGenres(model);
 	}
 	
@@ -54,9 +61,12 @@ public class GenresController {
 	}
 	
 	@RequestMapping("saveGenre")
-	public String saveGenre(Genre newGenre, Model model) {
-		genresService.createGenre(newGenre);
+	public String saveGenre(@ModelAttribute("newGenre") @Valid Genre newGenre, BindingResult validationsResults, Model model) {
+		if (validationsResults.hasErrors()) {
+			return "admin/registerGenre";
+		}
 		
+		genresService.createGenre(newGenre);
 		return "admin/registerGenreOk";
 	}
 

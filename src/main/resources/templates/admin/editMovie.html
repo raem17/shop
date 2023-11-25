@@ -15,43 +15,76 @@
         <h2>Editar película</h2>
         
 		<form action="#" th:action="saveChangesMovie" th:object="${movieEdit}" method="post" enctype="multipart/form-data">
-			<label>Título:</label>
-			<input th:field="*{title}" required="true"/>
-			
-			<label>Precio:</label>
-			<input th:field="*{price}" required="true" step=".01"/>
-			
-			<label>Sinopsis:</label>
-			<textarea th:field="*{synopsis}" rows="3" cols="15" required="true"/>
-			
-			<label>Director:</label>
-			<input th:field="*{director}" required="true"/>
-			
-			<label>País:</label>
-			<input th:field="*{country}" required="true"/>
-			
-			<label>EAN:</label>
-			<input th:field="*{ean}" required="true"/>
-			
-			<label>Editor/ra:</label>
-			<input th:field="*{editor}" required="true"/>
-			
-			<label>Año de lanzamiento:</label>
-			<input th:field="*{release_year}" required="true"/>
-			
-			<label>Género:</label>
-			<select th:field="*{idGenre}" required="true">
-				<option th:each="g : ${genres}" th:text="${g.name}" th:value="${g.id}"/>		
-			</select>
+			<div class="adminFormField">
+				<label>Título:</label>
+				<input th:field="*{title}" required="true"/>
+				<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+			</div>
 
-			<label>Duración:</label>
-			<input th:field="*{length_min}" required="true"/>
-			
-			<label>Imagen:</label>
-			<img th:src="@{'../showMovieImage?id=' + ${movieEdit.id}}" />
-			
-			<label>Imagen nueva:</label>
-			<input th:field="*{imageUploaded}" type="file"/>
+			<div class="adminFormField">			
+				<label>Precio:</label>
+				<input th:field="*{price}" required="true" step=".01"/>
+				<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+			</div>				
+
+			<div class="adminFormField">			
+				<label>Año de lanzamiento:</label>
+				<input th:field="*{release_year}" required="true" step=".01"/>
+				<span th:if="${#fields.hasErrors('release_year')}" th:errors="*{release_year}"></span>
+			</div>				
+				
+			<div class="adminFormField">
+				<label>Sinopsis:</label>
+				<textarea th:field="*{synopsis}" rows="3" cols="15" required="true"/>
+				<span th:if="${#fields.hasErrors('synopsis')}" th:errors="*{synopsis}"></span>
+			</div>				
+				
+			<div class="adminFormField">				
+				<label>Director:</label>
+				<input th:field="*{director}" required="true"/>
+				<span th:if="${#fields.hasErrors('director')}" th:errors="*{director}"></span>				
+			</div>				
+				
+			<div class="adminFormField">				
+				<label>País:</label>
+				<input th:field="*{country}" required="true"/>
+				<span th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></span>				
+			</div>				
+				
+			<div class="adminFormField">				
+				<label>EAN:</label>
+				<input th:field="*{ean}" required="true"/>
+				<span th:if="${#fields.hasErrors('ean')}" th:errors="*{ean}"></span>				
+			</div>				
+				
+			<div class="adminFormField">				
+				<label>Editor/ra:</label>
+				<input th:field="*{editor}" required="true"/>
+				<span th:if="${#fields.hasErrors('editor')}" th:errors="*{editor}"></span>				
+			</div>				
+				
+			<div class="adminFormField">				
+				<label>Género:</label>
+				<select th:field="*{idGenre}" required="true">
+					<option th:each="g : ${genres}" th:text="${g.name}" th:value="${g.id}"/>		
+				</select>
+			</div>				
+				
+			<div class="adminFormField">				
+				<label>Duración:</label>
+				<input th:field="*{length_min}" required="true"/>
+				<span th:if="${#fields.hasErrors('length_min')}" th:errors="*{length_min}"></span>				
+			</div>				
+				
+			<div class="adminFormField">				
+				<label>Imagen:</label>
+				<img th:src="@{'../showMovieImage?id=' + ${movieEdit.id}}" />
+			</div>
+				
+			<div class="adminFormField">				
+				<label>Imagen nueva:</label>
+				<input th:field="*{imageUploaded}" type="file"/>
+			</div>	
 			
 			<input type="hidden" th:field="*{id}"/>
 

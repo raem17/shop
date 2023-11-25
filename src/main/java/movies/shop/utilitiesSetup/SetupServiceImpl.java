@@ -44,14 +44,14 @@ public class SetupServiceImpl implements SetupService {
 				+ " la banda de su jefe, Bill. Sin embargo consigue sobrevivir, aunque queda en coma. Cinco años después despierta, con "
 				+ "un deseo de venganza", 2003, accion, 247, true, "Quentin Tarantino", "Estados Unidos", "065935846524", "Miramax Films");
 		
-		Movie m2 = new Movie("Django Unchained", 8.99, "La D es muda. La venganza no lo será", 2012, aventura, 165, true, 
+		Movie m2 = new Movie("Django desencadenado", 8.99, "La D es muda. La venganza no lo será", 2012, aventura, 165, true, 
 				"Quentin Tarantino", "Estados Unidos", "065935593005", "The Weinstein Company");
 		
-		Movie m3 = new Movie("Spiderman 2", 1.99, "Como si Peter Parker no tuviera suficiente con sus propios problemas, "
+		Movie m3 = new Movie("Spider-Man 2", 1.99, "Como si Peter Parker no tuviera suficiente con sus propios problemas, "
 				+ "estudios y su amor por Mary Jane, ahora tiene que salvar a la ciudad de un nuevo villano, el Doctor Octopus", 
 				2004, superheroes, 127, true, "Sam Raimi", "Estados Unidos", "5035822480930", "Sony Pictures Entertainment");
 		
-		Movie m4 = new Movie("Spiderman 3", 2.99, "Peter Parker sufre una terrible transformación cuando su traje se vuelve negro "
+		Movie m4 = new Movie("Spider-Man 3", 2.99, "Peter Parker sufre una terrible transformación cuando su traje se vuelve negro "
 				+ "y libera su personalidad oscura y vengativa. Afrontará el mayor desafío de su vida al tener que redescubrir la "
 				+ "humildad y compasión que lo hacen ser quien es: un héroe", 2007, comedia, 139, true, "Sam Raimi", "Estados Unidos",
 				"5035822558034", "Sony Pictures Entertainment");
