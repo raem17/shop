@@ -22,24 +22,39 @@
 
 	<div th:insert="fragments/general.html :: menu"></div>
 	
-	<table>
-		<tr>
-			<th>ID</th>
-			<th>Email de cliente</th>
-			<th>Dirección</th>
-			<th>Estado</th>
-		</tr>
-		
-		<tr class="pedido" th:each="o : ${orders}" >
-			<td><span th:text="${o.id}"></span></td>
-			<td><span th:text="${o.email}"></span></td>
-			<td><span th:text="${o.address}"></span></td>
-			<td><span th:text="${o.status}"></span></td>
-			
-			<td><a th:href="@{${ 'viewOrderDetails?id=' + o.id }}">Ver pedido completo</a></td>
-		</tr>
-		
-	</table>
+	<div class="card m-3">
+	    <h5 class="card-header" th:text="#{text.orders}"></h5>
+	    
+	    <div class="table-responsive text-nowrap">
+	      <table class="table">
+	        <thead>
+	          <tr class="text-nowrap">
+	            <th th:text="#{text.id}"></th>
+	            <th th:text="#{text.email}"></th>
+	            <th th:text="#{text.address}"></th>
+	            <th th:text="#{text.status}"></th>
+	            <th></th>
+	            <th></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+				
+	          <tr th:each="o : ${orders}">
+	            <th th:text="${o.id}"></th>
+	            <th th:text="${o.email}"></th>
+	            <th th:text="${o.address}"></th>
+	            <th th:text="${o.status}"></th>
+				<td><a th:text="#{link.order.viewOrderDetails}" th:href="@{${ 'viewOrderDetails?id=' + o.id }}">Ver pedido completo</a></td>
+	          </tr>
+	          
+	        </tbody>
+	      </table>
+	    </div>
+	</div>
+	
+	
+	
+	
 
 	<!-- Scripts para estilos -->
 	<script src="../../static/recursosAdmin/assets/vendor/libs/jquery/jquery.js"></script>

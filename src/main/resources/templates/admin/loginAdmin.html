@@ -15,22 +15,51 @@
 	<link rel="stylesheet" href="../../static/recursosAdmin/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
 	<link rel="stylesheet" href="../../static/recursosAdmin/assets/css/demo.css" />
 	<link rel="stylesheet" href="../../static/recursosAdmin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+	<link rel="stylesheet" href="../../static/recursosAdmin/assets/vendor/css/pages/page-auth.css" />
 	<script src="../../static/recursosAdmin/assets/vendor/js/helpers.js"></script>
 	<script src="../../static/recursosAdmin/assets/js/config.js"></script>
 	<title th:text="#{title.management}"></title>
 </head>
 <body>
 	
-	<h2>No puedes acceder a administración hasta que te identifiques</h2>
-	
-	<form action="admin/getMovies">
-		
-		<label>Contraseña:</label>
-		<input type="password" name="pass-login-admin" value="1234">
-		
-		<input type="submit" value="ACEPTAR">
-		
-	</form>
+	  <div class="container-xxl">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+          <!-- Register -->
+          <div class="card">
+            <div class="card-body">
+              <p class="mb-4">Ingresa la contraseña para acceder a administración</p>
+
+              <form id="formAuthentication" class="mb-3" action="admin/getMovies">
+                <div class="mb-3 form-password-toggle">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="password">Contraseña</label>
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="password"
+                      class="form-control"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                      name="pass-login-admin" 
+                      value="1234"
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <button class="btn btn-primary d-grid w-100" type="submit">Acceder</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+          <!-- /Register -->
+        </div>
+      </div>
+    </div>
 
 	<!-- Scripts para estilos -->
 	<script src="../../static/recursosAdmin/assets/vendor/libs/jquery/jquery.js"></script>

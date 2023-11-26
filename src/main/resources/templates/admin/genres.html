@@ -22,20 +22,31 @@
 
 	<div th:insert="fragments/general.html :: menu"></div>
 	
-	<div class="card" th:each="g : ${genres}">
-		<div class="card-desc">
-	      	<p><span th:text="${g.name}"></span></p>
-	
-	      	<ul>
-	          	<li>Descripción: <span th:text="${g.description}"></span></li>
-	      	</ul>
-	      	
-	      	<div class="movie-options">
-	          	<a th:href="@{${ 'deleteGenre?id=' + g.id }}" onclick="return confirm('¿Seguro?')">Eliminar</a>
-				<a th:href="@{${ 'editGenre?id=' + g.id }}">Editar</a>
-	      	</div>
-	
-		</div>
+	<div class="card m-3">
+	    <h5 class="card-header" th:text="#{text.genres}"></h5>
+	    
+	    <div class="table-responsive text-nowrap">
+	      <table class="table">
+	        <thead>
+	          <tr class="text-nowrap">
+	            <th th:text="#{text.name}">Nombre</th>
+	            <th th:text="#{text.description}">Descripción</th>
+	            <th></th>
+	            <th></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+				
+	          <tr th:each="g : ${genres}">
+	            <th th:text="${g.name}">Título</th>
+	            <th th:text="${g.description}">Descripción</th>
+	            <th><a th:text="#{text.delete}" th:href="@{${ 'deleteGenre?id=' + g.id }}" onclick="return confirm('¿Seguro?')">Eliminar</a></th>
+	            <th><a th:text="#{text.edit}" th:href="@{${ 'editGenre?id=' + g.id }}">Editar</a></th>
+	          </tr>
+	          
+	        </tbody>
+	      </table>
+	    </div>
 	</div>
 	
 	<!-- Scripts para estilos -->

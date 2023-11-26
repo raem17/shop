@@ -23,43 +23,69 @@
 	<div th:insert="fragments/general.html :: menu"></div>
 	
 	<!-- Buscador -->
-	<form action="getMovies" method="get">
-		<input type="text" name="title" th:value="${title}"/>
-		<input type="submit" value="Buscar"/>
-	</form>
-	
-	<div class="moviesTotalResultsAdmin">
-		<p>Películas encontradas:</p> 
-		<span th:text="${total}"></span>
+	<div class="container p-0 m-3 w-auto">
+	    <div class="row gap-2">
+          <!-- Buscador -->  		
+	      <div class="col-md-6">
+				<form class="d-flex" action="getMovies" method="get">
+				    <input class="form-control me-2" type="search" aria-label="Search" name="title" th:value="${title}">
+				    <button class="btn btn-outline-primary" type="submit" th:text="#{text.search}">Buscar</button>
+			    </form>
+	      </div>
+	      
+	      <!-- Total movies --> 
+		  <div class="moviesTotalResultsAdmin d-flex gap-2 w-auto align-items-center">
+		        <p class="m-0 p-0" th:text="#{text.filmsFound}">Películas encontradas:</p> 
+		        <span th:text="${total}"></span>
+		  </div>	      
+	      
+	    </div>
 	</div>
 	
-	<div class="card" th:each="m : ${movies}">
-		<img th:src="@{${ '../showMovieImage?id=' + m.id }}"/>
-		
-		<div class="card-desc">
-	      	<p><span th:text="${m.title}"></span></p>
-	
-	      	<ul>
-	          	<li>Sinopsis: <span th:text="${m.synopsis}"></span></li>
-	          	<li>Director: <span th:text="${m.director}"></span></li>
-	          	<li>País: <span th:text="${m.country}"></span></li>
-	          	<li>EAN: <span th:text="${m.ean}"></span></li>
-	          	<li>Editor/ra: <span th:text="${m.editor}"></span></li>
-	          	<li>Año de lanzamiento: <span th:text="${m.release_year}"></span></li>
-	          	<li>Género: <span th:text="${m.genre.name}"></span></li>
-	          	<li>Formato: <span th:text="${m.format}"></span></li>
-	          	<li>Duración: <span th:text="${m.length_min}"></span> min.</li>
-	          	<li class="price">Precio: <span th:text="${m.price}"></span> €</li>
-	      	</ul>
-	      	
-	      	<div class="movie-options">
-	          	<a th:href="@{${ 'deleteMovie?id=' + m.id }}" onclick="return confirm('¿Seguro?')">Eliminar</a>
-				<a th:href="@{${ 'editMovie?id=' + m.id }}">Editar</a>
-	      	</div>
-	
-		</div>
+	<div class="card m-3">
+	    <h5 class="card-header" th:text="#{text.movies}"></h5>
+	    <div class="table-responsive text-nowrap">
+	      <table class="table">
+	        <thead>
+	          <tr class="text-nowrap">
+	            <th th:text="#{text.image}">Imagen</th>
+	            <th th:text="#{text.movie.title}">Título</th>
+	            <th th:text="#{text.movie.director}">Director</th>
+	            <th th:text="#{text.movie.country}">País</th>
+	            <th th:text="#{text.movie.ean}">EAN</th>
+	            <th th:text="#{text.movie.editor}">Editor/ra</th>
+	            <th th:text="#{text.movie.releaseYear}">Año de lanzamiento</th>
+	            <th th:text="#{text.movie.genre}">Género</th>
+	            <th th:text="#{text.movie.format}">Formato</th>
+	            <th th:text="#{text.movie.length}">Duración</th>
+	            <th th:text="#{text.movie.price}">Precio</th>
+	            <th></th>
+	            <th></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+				
+	          <tr th:each="m : ${movies}">
+	            <td><img style="max-width: 100%;" th:src="@{${ '../showMovieImage?id=' + m.id }}"/></td>
+	            <th th:text="${m.title}">Título</th>
+	            <th th:text="${m.director}">Director</th>
+	            <th th:text="${m.country}">País</th>
+	            <th th:text="${m.ean}">EAN</th>
+	            <th th:text="${m.editor}">Editor/ra</th>
+	            <th th:text="${m.release_year}">Año de lanzamiento</th>
+	            <th th:text="${m.genre.name}">Género</th>
+	            <th th:text="${m.format}">Formato</th>
+	            <th th:text="${m.length_min}">Duración</th>
+	            <th th:text="${m.price}">Precio</th>
+	            <th><a th:text="#{text.delete}" th:href="@{${ 'deleteMovie?id=' + m.id }}" onclick="return confirm('¿Seguro?')">Eliminar</a></th>
+	            <th><a th:text="#{text.edit}" th:href="@{${ 'editMovie?id=' + m.id }}">Editar</a></th>
+	          </tr>
+	          
+	        </tbody>
+	      </table>
+	    </div>
 	</div>
-
+	
 	<!-- Paginación -->
 	<div class="paginationAdmin">
 		<a th:if="${previous >= 0}" th:href="@{${ 'getMovies?start=' + previous + '&title=' + title }}" >Anterior</a>
