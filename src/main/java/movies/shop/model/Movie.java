@@ -37,6 +37,7 @@ public class Movie {
 	private double price;
 	
 	@OneToOne
+	@Transient
 	private CartProduct cartProduct;
 	
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
@@ -96,6 +97,8 @@ public class Movie {
 			+ "números y los caracteres ç-")
 	private String editor;
 	
+	private String format;
+	
 	// Constructors
 	
 	public Movie() {
@@ -118,7 +121,7 @@ public class Movie {
 	 * @param actors
 	 */
 	public Movie(String title, double price, String synopsis, int release_year, Genre genre, int length_min, boolean activated, 
-			String director, String country, String ean, String editor) {
+			String director, String country, String ean, String editor, String format) {
 		super();
 		this.title = title;
 		this.price = price;
@@ -131,6 +134,7 @@ public class Movie {
 		this.country = country;
 		this.ean = ean;
 		this.editor = editor;
+		this.format = format;
 	}
 
 	public String getTitle() {
@@ -261,11 +265,20 @@ public class Movie {
 		this.editor = editor;
 	}
 
+	public String getFormat() {
+		return format;
+	}
+
+	public void setFormat(String format) {
+		this.format = format;
+	}
+
 	@Override
 	public String toString() {
 		return "Movie [title=" + title + ", price=" + price + ", synopsis=" + synopsis + ", release_year="
 				+ release_year + ", genre=" + genre.getName() + ", id=" + id + ", length_min=" + length_min + ", activated="
-				+ activated + ", director=" + director + ", country=" + country + ", ean=" + ean + ", editor=" + editor + "]";
+				+ activated + ", director=" + director + ", country=" + country + ", ean=" + ean + ", editor=" + editor
+				+ ", format=" + format + "]";
 	}
 
 }

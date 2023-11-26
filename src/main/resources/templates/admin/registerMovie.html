@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+	
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style_admin.css}" />
 	<title>Insert title here</title>
 </head>
+
 <body>
 
 	<div th:insert="fragments/general.html :: menu"></div>
@@ -15,19 +17,19 @@
 		<form action="#" th:action="saveMovie" th:object="${newMovie}" method="post" enctype="multipart/form-data">
 			<div class="adminFormField">
 				<label>Título:</label>
-				<input th:field="*{title}" required="true"/>
+				<input th:field="*{title}" required="true" type="text"/>
 				<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
 			</div>
 
 			<div class="adminFormField">			
 				<label>Precio:</label>
-				<input th:field="*{price}" required="true" step=".01"/>
+				<input th:field="*{price}" required="true" step=".01" type="number"/>
 				<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
 			</div>				
 
 			<div class="adminFormField">			
 				<label>Año de lanzamiento:</label>
-				<input th:field="*{release_year}" required="true" step=".01"/>
+				<input th:field="*{release_year}" required="true" step=".01" type="number"/>
 				<span th:if="${#fields.hasErrors('release_year')}" th:errors="*{release_year}"></span>
 			</div>				
 				
@@ -39,25 +41,25 @@
 				
 			<div class="adminFormField">				
 				<label>Director:</label>
-				<input th:field="*{director}" required="true"/>
+				<input th:field="*{director}" required="true" type="text"/>
 				<span th:if="${#fields.hasErrors('director')}" th:errors="*{director}"></span>				
 			</div>				
 				
 			<div class="adminFormField">				
 				<label>País:</label>
-				<input th:field="*{country}" required="true"/>
+				<input th:field="*{country}" required="true" type="text"/>
 				<span th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></span>				
 			</div>				
 				
 			<div class="adminFormField">				
 				<label>EAN:</label>
-				<input th:field="*{ean}" required="true"/>
+				<input th:field="*{ean}" required="true" type="number"/>
 				<span th:if="${#fields.hasErrors('ean')}" th:errors="*{ean}"></span>				
 			</div>				
 				
 			<div class="adminFormField">				
 				<label>Editor/ra:</label>
-				<input th:field="*{editor}" required="true"/>
+				<input th:field="*{editor}" required="true" type="text"/>
 				<span th:if="${#fields.hasErrors('editor')}" th:errors="*{editor}"></span>				
 			</div>				
 				
@@ -69,8 +71,15 @@
 			</div>				
 				
 			<div class="adminFormField">				
+				<label>Formato:</label>
+				<select th:field="*{format}" required="true">
+					<option th:each="f : ${formats}" th:text="${f.value}" th:value="${f.key}"/>		
+				</select>
+			</div>			
+				
+			<div class="adminFormField">				
 				<label>Duración:</label>
-				<input th:field="*{length_min}" required="true"/>
+				<input th:field="*{length_min}" required="true" type="number"/>
 				<span th:if="${#fields.hasErrors('length_min')}" th:errors="*{length_min}"></span>				
 			</div>				
 				

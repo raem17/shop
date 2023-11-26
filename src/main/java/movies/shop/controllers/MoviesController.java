@@ -1,6 +1,8 @@
 package movies.shop.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import movies.shop.constants.MovieFormats;
+import movies.shop.constants.OrderStatuses;
 import movies.shop.model.Genre;
 import movies.shop.model.Movie;
 import movies.shop.services.GenresService;
@@ -49,6 +53,12 @@ public class MoviesController {
 		model.addAttribute("newMovie", newMovie);
 		model.addAttribute("genres", genresService.getGenres());
 		
+		Map<String, String> formats = new HashMap<String, String>();
+		formats.put(MovieFormats.DVD, "DVD");
+		formats.put(MovieFormats.BR, "Blue-Ray");
+		formats.put(MovieFormats.BR_4K, "4K Ultra HD + Blu-Ray");
+		model.addAttribute("formats", formats);
+		
 		return "admin/registerMovie";
 	}
 	
@@ -56,6 +66,13 @@ public class MoviesController {
 	public String saveMovie (@ModelAttribute("newMovie") @Valid Movie newMovie, BindingResult validationsResults, Model model) {
 		if (validationsResults.hasErrors()) {
 			model.addAttribute("genres", genresService.getGenres());
+			
+			Map<String, String> formats = new HashMap<String, String>();
+			formats.put(MovieFormats.DVD, "DVD");
+			formats.put(MovieFormats.BR, "Blue-Ray");
+			formats.put(MovieFormats.BR_4K, "4K Ultra HD + Blu-Ray");
+			model.addAttribute("formats", formats);
+			
 			return "admin/registerMovie";
 		}
 		
@@ -77,6 +94,12 @@ public class MoviesController {
 		model.addAttribute("movieEdit", movie);
 		model.addAttribute("genres", genresService.getGenres());
 		
+		Map<String, String> formats = new HashMap<String, String>();
+		formats.put(MovieFormats.DVD, "DVD");
+		formats.put(MovieFormats.BR, "Blue-Ray");
+		formats.put(MovieFormats.BR_4K, "4K Ultra HD + Blu-Ray");
+		model.addAttribute("formats", formats);
+		
 		return "admin/editMovie";
 	}
 	
@@ -84,6 +107,13 @@ public class MoviesController {
 	public String saveChangesMovie (@ModelAttribute("movieEdit") @Valid Movie movieEdit, BindingResult validationsResults, Model model) {
 		if (validationsResults.hasErrors()) {
 			model.addAttribute("genres", genresService.getGenres());
+			
+			Map<String, String> formats = new HashMap<String, String>();
+			formats.put(MovieFormats.DVD, "DVD");
+			formats.put(MovieFormats.BR, "Blue-Ray");
+			formats.put(MovieFormats.BR_4K, "4K Ultra HD + Blu-Ray");
+			model.addAttribute("formats", formats);
+			
 			return "admin/editMovie";
 		}
 		
