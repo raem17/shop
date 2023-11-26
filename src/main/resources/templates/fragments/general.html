@@ -1,36 +1,109 @@
 <!DOCTYPE html>
 <!--<html xmlns:th="http://www.thymeleaf.org" >-->
+<html>
+
 <head>
-<meta charset="utf-8">
-<title>Insert title here</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 </head>
+
 <body>
 
-<div th:fragment="menu">
-	<header>
-		<h2 th:text="#{title.welcome}"></h2>
-		<a href="../" th:text="#{link.backToPublic}"></a>
-	</header>
-	
-	<nav>
-		<a href="getMovies" th:text="#{link.menu.manageMovies}"></a> 
-		<a href="getGenres">Gestionar géneros</a> 
-		<a href="getUsers">Gestionar usuarios</a>
-		<a href="getOrders">Gestionar pedidos</a>
+    <div th:fragment="menu">
 		
-		<a href="registerMovie">Crear una película</a>
-		<a href="registerGenre">Crear un género</a>
-		<a href="registerUser">Crear un usuario</a>
+		<div style="display: flex;justify-content: end;">
+	        <div class="btn-group m-3">
+	            <button
+	              type="button"
+	              class="btn btn-outline-secondary dropdown-toggle"
+	              data-bs-toggle="dropdown"
+	              aria-expanded="false"
+	              th:text="#{link.lang}"
+	            >Idioma
+	            </button>
+	            <ul class="dropdown-menu">
+	              <li><a class="dropdown-item" href="?idioma=es" th:text="#{link.lang.es}">Español</a></li>
+	              <li><a class="dropdown-item" href="?idioma=en" th:text="#{link.lang.en}">Inglés</a></li>
+	            </ul>
+	        </div>
+	    </div>
 		
-		<a href="../logoutAdmin">Cerrar sesión admin</a>
-	</nav>
-	
-	<div style="margin:1.5rem;display: flex;gap: 1rem;justify-content: end;">
-		<a href="?idioma=es">Español</a>
-		<a href="?idioma=en">Inglés</a>
-	</div>
-	
-</div>
+        <!-- NavBar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+            <div class="container-fluid">
+                <a class="navbar-brand" th:text="#{title.management}">Administración</a>
+                <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                >
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Dropdown item Movies -->
+                    <li class="nav-item dropdown">
+                        <a th:text="#{text.movies}" class="nav-link active dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" 
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Películas</a>
 
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="getMovies" th:text="#{link.menu.manageMovies}">Gestionar</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a th:text="#{link.menu.createMovie}" class="dropdown-item" href="registerMovie">Crear</a></li>
+                        </ul>
+                    </li> <!-- Fin de dropdown item -->
+                    
+                    <!-- Dropdown item Genres -->
+                    <li class="nav-item dropdown">
+                        <a th:text="#{text.genres}" class="nav-link active dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" 
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Películas</a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="getGenres" th:text="#{link.menu.manageGenres}">Gestionar</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a th:text="#{link.menu.createGenre}" class="dropdown-item" href="registerGenre">Crear</a></li>
+                        </ul>
+                    </li> <!-- Fin de dropdown item -->
+
+                    <!-- Dropdown item Users -->
+                    <li class="nav-item dropdown">
+                        <a th:text="#{text.users}" class="nav-link active dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" 
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Películas</a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="getUsers" th:text="#{link.menu.manageUsers}">Gestionar</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a th:text="#{link.menu.createUser}" class="dropdown-item" href="registerUser">Crear</a></li>
+                        </ul>
+                    </li> <!-- Fin de dropdown item -->
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="getOrders" th:text="#{link.menu.manageOrders}">Gestionar</a>
+                    </li>
+
+                </ul>
+
+                <a class="dropdown-item" href="../logoutAdmin" style="width: fit-content;">
+                    <i class="bx bx-log-out me-2"></i>
+                    <span class="align-middle" th:text="#{text.logout}">Log Out</span>
+                </a>
+
+                </div>
+            </div>
+        </nav>
+        <!-- NavBar -->
+    </div>
+    
 </body>
+
 </html>
