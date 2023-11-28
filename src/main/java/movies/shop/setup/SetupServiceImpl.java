@@ -91,9 +91,9 @@ public class SetupServiceImpl implements SetupService {
 		User u3 = new User("Teodoro", "Robles", "teorobles@gmail.com", "Lalanda3756", true);
 		
 		// imagenes
-		u1.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImagesUsers/u1.jpg"));
-		u2.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImagesUsers/u2.jpg"));
-		u3.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImagesUsers/u3.jpg"));
+		u1.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImagesUsers/u1.png"));
+		u2.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImagesUsers/u2.png"));
+		u3.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImagesUsers/u3.png"));
 		
 		entityManager.persist(u1);
 		entityManager.persist(u2);
