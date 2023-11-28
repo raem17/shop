@@ -11,19 +11,24 @@ $("#movies").click(mostrar_movies);
 $("#registrarme").click(function(){
 	$("#contenedor").html(plantillaRegistro);
 	
-	$("#form_registro_usuario").submit(
-		function (e) {
+	$("#form_registro_usuario").submit(function (e) {
 			let formulario = document.forms[0];
 			let formData = new FormData(formulario);
+			
 			$.ajax("webServiceUsers/userRegister",{
 				type: "POST",
 				data: formData,
 				cache: false,
 				contentType: false,
 				processData: false,
-				success: function(res) {
-					alert("Se ha registrado correctamente.");
-				} // end success
+	            success: function(e) {
+	                // Manejar la respuesta del servidor
+	                alert("Te has registrado correctamente: " + e);
+	            },
+	            error: function(error) {
+	                // Manejar errores
+	                alert("Error: " + error);
+	            }
 			})
 			
 			// evitar envio de form, todo el cliente se gestiona con javascript
