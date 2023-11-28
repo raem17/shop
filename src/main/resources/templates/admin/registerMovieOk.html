@@ -26,8 +26,8 @@
 	<div th:insert="fragments/general.html :: menu"></div>
 	
 	<div class="registerOk">
-		<p>Se ha registrado su película correctamente.</p>
-		<a href="getMovies">Ver listado de películas</a>
+		<p th:text="#{text.successRegister}">Se ha registrado su película correctamente.</p>
+		<a th:text="#{text.manageMovies}" href="getMovies">Ver listado de películas</a>
 	</div>
 
 	<!-- Scripts para estilos -->

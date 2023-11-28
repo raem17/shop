@@ -26,8 +26,8 @@
 	<div th:insert="fragments/general.html :: menu"></div>
 	
 	<div class="registerOk">
-		<p>Se ha registrado al usuario correctamente.</p>
-		<a href="getUsers">Ver listado de usuarios</a>
+		<p th:text="#{text.successRegister}">Se ha registrado al usuario correctamente.</p>
+		<a th:text="#{text.manageUsers}" href="getUsers">Ver listado de usuarios</a>
 	</div>
 
 	<!-- Scripts para estilos -->

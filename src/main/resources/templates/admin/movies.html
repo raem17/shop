@@ -49,16 +49,16 @@
 	        <thead>
 	          <tr class="text-nowrap">
 	            <th th:text="#{text.image}">Imagen</th>
-	            <th th:text="#{text.movie.title}">Título</th>
-	            <th th:text="#{text.movie.director}">Director</th>
-	            <th th:text="#{text.movie.country}">País</th>
-	            <th th:text="#{text.movie.ean}">EAN</th>
-	            <th th:text="#{text.movie.editor}">Editor/ra</th>
-	            <th th:text="#{text.movie.releaseYear}">Año de lanzamiento</th>
-	            <th th:text="#{text.movie.genre}">Género</th>
-	            <th th:text="#{text.movie.format}">Formato</th>
-	            <th th:text="#{text.movie.length}">Duración</th>
-	            <th th:text="#{text.movie.price}">Precio</th>
+	            <th th:text="#{text.title}">Título</th>
+	            <th th:text="#{text.director}">Director</th>
+	            <th th:text="#{text.country}">País</th>
+	            <th th:text="#{text.ean}">EAN</th>
+	            <th th:text="#{text.editor}">Editor/ra</th>
+	            <th th:text="#{text.releaseYear}">Año de lanzamiento</th>
+	            <th th:text="#{text.genre}">Género</th>
+	            <th th:text="#{text.format}">Formato</th>
+	            <th th:text="#{text.length}">Duración</th>
+	            <th th:text="#{text.price}">Precio</th>
 	            <th></th>
 	            <th></th>
 	          </tr>
@@ -66,7 +66,7 @@
 	        <tbody>
 				
 	          <tr th:each="m : ${movies}">
-	            <td><img style="max-width: 100%;" th:src="@{${ '../showMovieImage?id=' + m.id }}"/></td>
+	            <th><img style="width: 4rem;padding: 0.5rem 0.1rem;" th:src="@{${ '../showMovieImage?id=' + m.id }}"/></th>
 	            <th th:text="${m.title}">Título</th>
 	            <th th:text="${m.director}">Director</th>
 	            <th th:text="${m.country}">País</th>
@@ -88,8 +88,8 @@
 	
 	<!-- Paginación -->
 	<div class="paginationAdmin" style="display: flex;justify-content: center; gap: 1.25rem;margin:1.5rem">
-		<a th:if="${previous >= 0}" th:href="@{${ 'getMovies?start=' + previous + '&title=' + title }}" >Anterior</a>
-		<a th:if="${next < total}" th:href="@{${ 'getMovies?start=' + next + '&title=' + title}}" >Siguiente</a>
+		<a th:if="${previous >= 0}" th:href="@{${ 'getMovies?start=' + previous + '&title=' + title }}"  th:text="#{text.previous}">Anterior</a>
+		<a th:if="${next < total}" th:href="@{${ 'getMovies?start=' + next + '&title=' + title}}"  th:text="#{text.next}">Siguiente</a>
 	</div>
 	
 	<!-- Scripts para estilos -->

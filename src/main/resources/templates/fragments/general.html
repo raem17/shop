@@ -18,12 +18,12 @@
 	              class="btn btn-outline-secondary dropdown-toggle"
 	              data-bs-toggle="dropdown"
 	              aria-expanded="false"
-	              th:text="#{link.lang}"
+	              th:text="#{text.lang}"
 	            >Idioma
 	            </button>
 	            <ul class="dropdown-menu">
-	              <li><a class="dropdown-item" href="?idioma=es" th:text="#{link.lang.es}">Español</a></li>
-	              <li><a class="dropdown-item" href="?idioma=en" th:text="#{link.lang.en}">Inglés</a></li>
+	              <li><a class="dropdown-item" href="?idioma=es" th:text="#{text.es}">Español</a></li>
+	              <li><a class="dropdown-item" href="?idioma=en" th:text="#{text.en}">Inglés</a></li>
 	            </ul>
 	        </div>
 	    </div>
@@ -31,7 +31,7 @@
         <!-- NavBar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
             <div class="container-fluid">
-                <a class="navbar-brand" th:text="#{title.management}" href="inicio">Administración</a>
+                <a class="navbar-brand" th:text="#{text.management}" href="inicio">Administración</a>
                 
                 <style>
 					a.navbar-brand {
@@ -63,25 +63,25 @@
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">Películas</a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="getMovies" th:text="#{link.menu.manageMovies}">Gestionar</a></li>
+                            <li><a class="dropdown-item" href="getMovies" th:text="#{text.manageMovies}">Gestionar</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a th:text="#{link.menu.createMovie}" class="dropdown-item" href="registerMovie">Crear</a></li>
+                            <li><a th:text="#{text.createMovie}" class="dropdown-item" href="registerMovie">Crear</a></li>
                         </ul>
                     </li> <!-- Fin de dropdown item -->
                     
                     <!-- Dropdown item Genres -->
                     <li class="nav-item dropdown">
                         <a th:text="#{text.genres}" class="nav-link active dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" 
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Películas</a>
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Generos</a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="getGenres" th:text="#{link.menu.manageGenres}">Gestionar</a></li>
+                            <li><a class="dropdown-item" href="getGenres" th:text="#{text.manageGenres}">Gestionar</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a th:text="#{link.menu.createGenre}" class="dropdown-item" href="registerGenre">Crear</a></li>
+                            <li><a th:text="#{text.createGenre}" class="dropdown-item" href="registerGenre">Crear</a></li>
                         </ul>
                     </li> <!-- Fin de dropdown item -->
 
@@ -91,16 +91,16 @@
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">Películas</a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="getUsers" th:text="#{link.menu.manageUsers}">Gestionar</a></li>
+                            <li><a class="dropdown-item" href="getUsers" th:text="#{text.manageUsers}">Gestionar</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a th:text="#{link.menu.createUser}" class="dropdown-item" href="registerUser">Crear</a></li>
+                            <li><a th:text="#{text.createUser}" class="dropdown-item" href="registerUser">Crear</a></li>
                         </ul>
                     </li> <!-- Fin de dropdown item -->
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="getOrders" th:text="#{link.menu.manageOrders}">Gestionar</a>
+                        <a class="nav-link active" href="getOrders" th:text="#{text.manageOrders}">Gestionar</a>
                     </li>
 
                 </ul>

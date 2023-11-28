@@ -31,7 +31,7 @@ public class ShowImage {
 			return;
 		}
 		
-		response.setContentType("image/jpeg, image/jpg, image/png, image/gif, image/webp");
+		response.setContentType("image/jpeg, image/jpg, image/png, image/gif, image/webp, image/svg");
 		response.getOutputStream().write(info);
 		response.getOutputStream().close();
 	}

@@ -29,7 +29,7 @@
 	      <table class="table">
 	        <thead>
 	          <tr class="text-nowrap">
-				<th th:text="#{text.users.avatar}">Avatar</th>
+				<th th:text="#{text.avatar}">Avatar</th>
 	            <th th:text="#{text.email}">Correo</th>
 	            <th th:text="#{text.name}">Nombre</th>
 	            <th th:text="#{text.lastname}">Apellidos</th>
@@ -41,7 +41,7 @@
 	        <tbody>
 				
 	          <tr th:each="u : ${users}">
-				<td><img style="max-width: 50px;" th:src="@{${ '../showUserImage?id=' + u.id }}"/></td>
+				<th><img style="max-width: 50px;" th:src="@{${ '../showUserImage?id=' + u.id }}"/></th>
 	            <th th:text="${u.email}"></th>
 	            <th th:text="${u.first_name}"></th>
 	            <th th:text="${u.last_name}"></th>

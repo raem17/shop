@@ -28,24 +28,24 @@
 	<div th:insert="fragments/general.html :: menu"></div>
 
     <main>
-        <h2>Editar género</h2>
+        <h2 th:text="#{text.editGenre}">Editar género</h2>
         
 		<form action="#" th:action="saveChangesGenre" th:object="${genre}" method="post" enctype="multipart/form-data">
 			<div class="adminFormField">
-				<label>Nombre:</label>
+				<label th:text="#{text.name}">Nombre:</label>
 				<input th:field="*{name}" required="true" type="text"/>
 				<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 			</div>
 			
 			<div class="adminFormField">
-				<label>Descripción:</label>
+				<label th:text="#{text.description}">Descripción:</label>
 				<textarea th:field="*{description}" rows="3" cols="15" required="true"/>
 				<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 			</div>
 		
 			<input type="hidden" th:field="*{id}"/>
 
-			<input type="submit" value="GUARDAR CAMBIOS" />
+			<input type="submit" value="GUARDAR CAMBIOS"/>
 		</form>
 		
     </main>

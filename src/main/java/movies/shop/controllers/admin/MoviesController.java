@@ -49,6 +49,9 @@ public class MoviesController {
 	public String registerMovie (Model model) {
 		Movie newMovie = new Movie();
 		newMovie.setPrice(1);
+		newMovie.setRelease_year(2023);
+		newMovie.setEan("1234567891234");
+		newMovie.setLength_min(60);
 		
 		model.addAttribute("newMovie", newMovie);
 		model.addAttribute("genres", genresService.getGenres());

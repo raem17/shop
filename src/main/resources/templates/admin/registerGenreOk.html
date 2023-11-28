@@ -26,8 +26,8 @@
 	<div th:insert="fragments/general.html :: menu"></div>
 	
 	<div class="registerOk">
-		<p>Se ha registrado su género correctamente.</p>
-		<a href="getGenres">Ver listado de géneros</a>
+		<p th:text="#{text.successRegister}">Se ha registrado su género correctamente.</p>
+		<a th:text="#{text.manageGenres}" href="getGenres">Ver listado de géneros</a>
 	</div>
 	
 	<!-- Scripts para estilos -->
