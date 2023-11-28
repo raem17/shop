@@ -31,7 +31,19 @@
         <!-- NavBar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
             <div class="container-fluid">
-                <a class="navbar-brand" th:text="#{title.management}">Administración</a>
+                <a class="navbar-brand" th:text="#{title.management}" href="inicio">Administración</a>
+                
+                <style>
+					a.navbar-brand {
+						padding: 0 !important;
+					}
+					
+					a.navbar-brand:hover {
+						color:rgb(0, 128, 192) !important;
+						text-decoration: underline;
+					}
+				</style>
+                
                 <button
                 class="navbar-toggler"
                 type="button"

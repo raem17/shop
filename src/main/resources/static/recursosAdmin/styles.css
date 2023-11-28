@@ -34,7 +34,7 @@ main > form {
 main > form > div.adminFormField {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: 0.25rem;
 }
 
 main > form > div.adminFormField > label {
@@ -61,6 +61,10 @@ main > form > div.adminFormField > textarea {
 
 main > form > div.adminFormField > span {
 	color: #F44336;
+}
+
+main > form > div.adminFormField > span.sizeAdvice {
+	color: #566A7F;
 }
 
 main > form > div.adminFormField > select {

@@ -74,7 +74,14 @@ public class SetupServiceImpl implements SetupService {
 		entityManager.persist(m2);
 		entityManager.persist(m3);
 		entityManager.persist(m4);
-		entityManager.persist(m5);
+		
+		// borrar
+		for (int i = 0; i < 30; i++) {
+			Movie newM = new Movie("Pulp Fiction " + i, 1, "Historias de dos matones, un boxeador y una pareja de atracadores de "
+					+ "poca monta envueltos en una violencia espectacular e irónica", 1994 + i, drama, 165 + i, true, "Quentin Tarantino", 
+					"Estados Unidos", "5017239191964", "Miramax Films", MovieFormats.BR);
+			entityManager.persist(newM);
+		}
 	}
 	
 	private void createUsers() {

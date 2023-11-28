@@ -87,7 +87,7 @@
 	</div>
 	
 	<!-- Paginación -->
-	<div class="paginationAdmin">
+	<div class="paginationAdmin" style="display: flex;justify-content: center; gap: 1.25rem;margin:1.5rem">
 		<a th:if="${previous >= 0}" th:href="@{${ 'getMovies?start=' + previous + '&title=' + title }}" >Anterior</a>
 		<a th:if="${next < total}" th:href="@{${ 'getMovies?start=' + next + '&title=' + title}}" >Siguiente</a>
 	</div>
