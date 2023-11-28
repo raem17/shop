@@ -1,4 +1,4 @@
-package movies.shop.controllersImage;
+package movies.shop.controllers.image;
 
 import java.io.IOException;
 

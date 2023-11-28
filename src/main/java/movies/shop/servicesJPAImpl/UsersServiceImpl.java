@@ -7,12 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
 import movies.shop.model.User;
 import movies.shop.services.UsersService;
+import movies.shop.utilities.Utilities;
 
 @Service
 @Transactional
@@ -20,14 +22,17 @@ public class UsersServiceImpl implements UsersService {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
-
+	
+	@Autowired
+	private Utilities utilities;
+	
 	@Override
 	public void createUser(User u) {
 		u.setActivated(true);
 		
 		if (u.getAvatar().getSize() == 0) {
-			u.setImageInBytes(null);
-			
+			u.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImagesUsers/default.png"));
+
 		} else {
 			try {
 				u.setImageInBytes(u.getAvatar().getBytes());

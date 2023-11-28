@@ -1,13 +1,10 @@
-package movies.shop.utilitiesSetup;
-
-import java.io.IOException;
-import java.net.URL;
+package movies.shop.setup;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +13,7 @@ import movies.shop.model.Genre;
 import movies.shop.model.Movie;
 import movies.shop.model.User;
 import movies.shop.model.setup.Setup;
+import movies.shop.utilities.Utilities;
 
 @Service
 @Transactional
@@ -23,6 +21,9 @@ public class SetupServiceImpl implements SetupService {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	@Autowired
+	private Utilities utilities;
 
 	private void createMovies() {
 		// Se crean los genres
@@ -63,11 +64,11 @@ public class SetupServiceImpl implements SetupService {
 				"Estados Unidos", "5017239191964", "Miramax Films", MovieFormats.DVD);
 		
 		// imagenes
-		m1.setImageInBytes(copyBaseImage("http://localhost:8080/baseImages/kill_bill.jpg"));
-		m2.setImageInBytes(copyBaseImage("http://localhost:8080/baseImages/django.jpg"));
-		m3.setImageInBytes(copyBaseImage("http://localhost:8080/baseImages/spiderman2.jpg"));
-		m4.setImageInBytes(copyBaseImage("http://localhost:8080/baseImages/spiderman3.jpg"));
-		m5.setImageInBytes(copyBaseImage("http://localhost:8080/baseImages/pulp_fiction.jpg"));
+		m1.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImages/kill_bill.jpg"));
+		m2.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImages/django.jpg"));
+		m3.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImages/spiderman2.jpg"));
+		m4.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImages/spiderman3.jpg"));
+		m5.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImages/pulp_fiction.jpg"));
 		
 		// Se registran las movies en la base de datos
 		entityManager.persist(m1);
@@ -90,9 +91,9 @@ public class SetupServiceImpl implements SetupService {
 		User u3 = new User("Teodoro", "Robles", "teorobles@gmail.com", "Lalanda3756", true);
 		
 		// imagenes
-		u1.setImageInBytes(copyBaseImage("http://localhost:8080/baseImagesUsers/u1.jpg"));
-		u2.setImageInBytes(copyBaseImage("http://localhost:8080/baseImagesUsers/u2.jpg"));
-		u3.setImageInBytes(copyBaseImage("http://localhost:8080/baseImagesUsers/u3.jpg"));
+		u1.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImagesUsers/u1.jpg"));
+		u2.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImagesUsers/u2.jpg"));
+		u3.setImageInBytes(utilities.copyBaseImage("http://localhost:8080/baseImagesUsers/u3.jpg"));
 		
 		entityManager.persist(u1);
 		entityManager.persist(u2);
@@ -125,20 +126,6 @@ public class SetupServiceImpl implements SetupService {
 		} else {
 			System.out.println("El setup ya existe.");
 		}
-	}
-	
-	private byte[] copyBaseImage(String rutaOrigen) {
-		byte[] info = null;
-		
-		try {
-			URL url = new URL(rutaOrigen);
-			info = IOUtils.toByteArray(url);
-			
-		} catch (IOException e) {
-			System.out.println("No se puede copiar la imagen base: " + e.getMessage());
-		}
-		
-		return info;
 	}
 
 }

@@ -1,4 +1,4 @@
-package movies.shop.utilitiesSetup;
+package movies.shop.setup;
 
 public interface SetupService {
 	
