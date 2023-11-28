@@ -14,6 +14,9 @@
 	<link rel="stylesheet" href="../../static/recursosAdmin/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
 	<link rel="stylesheet" href="../../static/recursosAdmin/assets/css/demo.css" />
 	<link rel="stylesheet" href="../../static/recursosAdmin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+	<!-- CSS -->
+	<link rel="stylesheet" href="../../static/recursosAdmin/styles.css" />
+	<!-- Scripts -->
 	<script src="../../static/recursosAdmin/assets/vendor/js/helpers.js"></script>
 	<script src="../../static/recursosAdmin/assets/js/config.js"></script>
 	<title th:text="#{title.management}"></title>
@@ -28,31 +31,31 @@
 		<form action="#" th:action="saveUser" th:object="${newUser}" method="post" enctype="multipart/form-data">
 			<div class="adminFormField">
 				<label>Nombre:</label>
-				<input th:field="*{first_name}" required="true"/>
+				<input th:field="*{first_name}" required="true" type="text"/>
 				<span th:if="${#fields.hasErrors('first_name')}" th:errors="*{first_name}"></span>
 			</div>
 			
 			<div class="adminFormField">
 				<label>Apellidos:</label>
-				<input th:field="*{last_name}" required="true"/>
+				<input th:field="*{last_name}" required="true" type="text"/>
 				<span th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}"></span>
 			</div>
 			
 			<div class="adminFormField">
 				<label>Email:</label>
-				<input th:field="*{email}" required="true"/>
+				<input th:field="*{email}" required="true" type="text"/>
 				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 			</div>
 			
 			<div class="adminFormField">
 				<label>Contraseña:</label>
-				<input th:field="*{pass}" required="true"/>
+				<input th:field="*{pass}" required="true" type="text"/>
 				<span th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}"></span>
 			</div>
 			
 			<div class="adminFormField">
 				<label>Avatar:</label>
-				<input th:field="*{avatar}" type="file"/>
+				<input th:field="*{avatar}" type="file" class="form-control"/>
 			</div>
 			
 			<input type="submit" value="GUARDAR CAMBIOS" />

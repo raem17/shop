@@ -25,6 +25,8 @@ public class Genre {
 			+ "números y los caracteres ç-")
 	private String name;
 	
+	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ç.,\\-:]+", message = "El campo solo puede contener letras, "
 			+ "números y los caracteres ¡!&()¿?ç.,-:")
 	private String description;

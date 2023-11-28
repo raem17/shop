@@ -1,4 +1,4 @@
-package movies.shop.controllers;
+package movies.shop.controllers.admin;
 
 import java.util.HashMap;
 import java.util.Map;

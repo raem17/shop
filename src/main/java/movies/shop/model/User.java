@@ -20,21 +20,25 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})}, name="users")
 public class User {
 	
-	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@Size(min = 1, max = 70, message = "El campo debe tener entre 1 y 50 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
 			+ "números y los caracteres ç-")
 	private String first_name;
 	
-	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@Size(min = 1, max = 70, message = "El campo debe tener entre 1 y 50 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
 			+ "números y los caracteres ç-")
 	private String last_name;
 	
+	@Size(min = 1, max = 100, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Ingrese una dirección de correo electrónico válida.")
 	private String email;
 	
+	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d@#$%^&+=!¡?¿]{8,}$", message = "La contraseña debe tener al menos "
 			+ "8 caracteres e incluir al menos una minúscula, una mayúscula y un dígito.")
 	private String pass;
