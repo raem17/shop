@@ -33,19 +33,60 @@ async function existeUsuarioEnSesion() {
     }
 }
 
-function mostrar_movies() {	
-	$.ajax("webServiceMovies/getMovies").done(function(res) {
+let movieTitle = "";
+let resultsStart = 0;
+function mostrar_movies(){
+	$.getJSON("webServiceMovies/getMovies",{ title : movieTitle, start : resultsStart }).done(function(res) {
 		let texto_html = "";
+		let movies = res.movies;
+
+		texto_html = Mustache.render(plantillaMovies, movies);
+		$("#contenedor").html(texto_html);
+		
+		// Bloque de código relativo al buscador
+		
+		$("#searchTitle").val(movieTitle);
+		$("#searchTitle").focus();
 	
-		for(let i in res) {
-			res[i].price = res[i].price.toString().replace(".", ",");
+		// Boton buscar
+		$("#buttonSearchMovie").click(function() {
+			movieTitle = $("#searchTitle").val();
+			resultsStart = 0; //resetea paginacion
+			mostrar_movies();
+		});	
+		
+		if (resultsStart <= 0 ){
+			$("#previousMovies").hide();
+			
+		} else{
+			$("#previousMovies").show();
 		}
 		
-		texto_html = Mustache.render(plantillaMovies, res);
-		$("#contenedor").html(texto_html);		
+		// Mostrar total de resultados
+		let totalMovies = res.total;
+		$("#movieTotalResults").html(totalMovies);
 		
-	}); // end ajax y done servicioWebMovies/obtenerMovies
-}
+		if ((resultsStart + 10 ) < totalMovies){
+			$("#nextMovies").show();
+			
+		} else {
+			$("#nextMovies").hide();
+		}
+		
+		// Clicks en anterior y siguiente	
+		$("#previousMovies").click(function(){
+			resultsStart -= 10;
+			mostrar_movies();
+		});
+		
+		$("#nextMovies").click(function(){
+			resultsStart += 10;
+			mostrar_movies();
+		});					
+		
+	});//end getJSON
+	
+}//end mostrar_movies
 
 function actualizarSubtotalYTotalEnCarrito() {
     let total = 0;

@@ -31,29 +31,6 @@ en el momento de la vinculación del evento, el evento no se asociará correctam
 
 //// Clicks dentro de plantilla movies:
 
-// Buscador de movies
-$("#contenedor").on("click", "#buttonSearchMovie", function() {
-	let title = $("#searchTitle").val();
-	
-	$.ajax({
-	    url: "webServiceMovies/getMoviesByTitle",
-	    data: { title: title },
-	    method: "GET",
-	}).done(function(res) {
-	    let texto_html = "";
-	
-	    for (let i in res) {
-	        res[i].price = res[i].price.toString().replace(".", ",");
-	    }
-	
-	    texto_html = Mustache.render(plantillaMovies, res);
-	    $("#contenedor").html(texto_html);
-	    
-		$("#searchTitle").val(title);
-	}); // end ajax
-	
-});
-
 // Click en comprar
 $("#contenedor").on("click", ".enlace_comprar_listado_principal", async function() {
 	let id_producto = $(this).attr("id-producto");

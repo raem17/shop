@@ -10,12 +10,6 @@ public interface MoviesService {
 	
 	void createMovie(Movie newMovie);
 	
-	List<Movie> getMovies();
-	
-	List<Movie> getMoviesByStartAndEnd(int start, int resultsPerPage);
-	
-	List<Movie> getMoviesByTitle(String title);
-	
 	List<Movie> getMoviesByTitleAndStartAndEnd(String title, int start, int resultsPerPage);
 	
 	int getTotalMovies(String title);
@@ -28,9 +22,7 @@ public interface MoviesService {
 	
 	// Metodos para la comunicacion por ajax
 	
-	List<Map<String, Object>> getMoviesForJSONFormation();
-	
-	List<Map<String, Object>> getMoviesByTitleForJSONFormation(String title);
+	List<Map<String, Object>> getMoviesByTitleAndStartAndEndForJSONFormation(String title, int start);
 
 	Map<String, Object> getMovieDetails(int idMovie);
 }

@@ -1,4 +1,4 @@
-package movies.shop.controllers.admin;
+package movies.shop.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 

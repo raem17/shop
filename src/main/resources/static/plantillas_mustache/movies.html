@@ -1,10 +1,14 @@
 <!-- lo siguiente es la forma de indicar a mustache
 de que haga lo indicado con cada elemento de un array recibido -->
 
-<div>
-	<label>Buscador:</label> 
+<div class="searchBar">
 	<input type="text" id="searchTitle"/>
 	<button id="buttonSearchMovie">Buscar</button>	
+</div>
+
+<div class="resultsFound">
+	<p>Resultados encontrados:</p>
+	<span id="movieTotalResults"></span>
 </div>
 
 {{#.}}
@@ -29,3 +33,8 @@ de que haga lo indicado con cada elemento de un array recibido -->
     
 </div>
 {{/.}}
+
+<div class="pagination">
+	<a id="previousMovies" href="#">Anterior</a> 
+	<a id="nextMovies" href="#">Siguiente</a>
+</div>

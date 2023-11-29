@@ -42,35 +42,6 @@ public class MoviesServiceImpl implements MoviesService {
 	}
 
 	@Override
-	public List<Movie> getMovies() {
-		List<Movie> movies = entityManager.createQuery("select m from Movie m where m.activated = "
-				+ "true order by m.id desc", Movie.class).getResultList();
-		
-		return movies;
-	}
-	
-	@Override
-	public List<Movie> getMoviesByStartAndEnd(int start, int resultsPerPage) {
-		List<Movie> movies = entityManager.createQuery("select m from Movie m where m.activated = "
-				+ "true and order by m.id desc", Movie.class)
-				.setFirstResult(start)
-				.setMaxResults(resultsPerPage)
-				.getResultList();
-		
-		return movies;
-	}
-	
-	@Override
-	public List<Movie> getMoviesByTitle(String title) {
-		List<Movie> movies = entityManager.createQuery("select m from Movie m where m.activated = "
-				+ "true and lower(m.title) like lower(:title) order by m.id desc", Movie.class)
-				.setParameter("title", "%" + title + "%")
-				.getResultList();
-		
-		return movies;
-	}
-	
-	@Override
 	public List<Movie> getMoviesByTitleAndStartAndEnd(String title, int start, int resultsPerPage) {
 		List<Movie> movies = entityManager.createQuery("select m from Movie m where m.activated = "
 				+ "true and lower(m.title) like lower(:title) order by m.id desc", Movie.class)
@@ -133,19 +104,10 @@ public class MoviesServiceImpl implements MoviesService {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Map<String, Object>> getMoviesForJSONFormation() {
-		Query q = entityManager.createNativeQuery(SQLConstantsMovies.GET_MOVIES_FOR_JSON);
-		NativeQueryImpl nativeQuery = (NativeQueryImpl) q;
-		nativeQuery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
-		
-		return nativeQuery.getResultList();
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Map<String, Object>> getMoviesByTitleForJSONFormation(String title) {
-		Query q = entityManager.createNativeQuery(SQLConstantsMovies.GET_MOVIES_BY_TITLE_FOR_JSON);
+	public List<Map<String, Object>> getMoviesByTitleAndStartAndEndForJSONFormation(String title, int start) {
+		Query q = entityManager.createNativeQuery(SQLConstantsMovies.GET_MOVIES_BY_TITLE_AND_START_AND_END_FOR_JSON);
 		q.setParameter("title", "%" + title + "%");
+		q.setParameter("start", start);
 		NativeQueryImpl nativeQuery = (NativeQueryImpl) q;
 		nativeQuery.setResultTransformer(AliasToEntityMapResultTransformer.INSTANCE);
 		

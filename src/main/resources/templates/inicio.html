@@ -1,53 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-<title>Inicio</title>
-</head>
-
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+	<title>Inicio</title>
+	</head>
 <body>
 
-<header>
-	<h2>Bienvenido a la parte pública de la tienda</h2>
-	<a href="admin/inicio">Acceso a administración</a>
+	<header>
+		<h2>Bienvenido a la parte pública de la tienda</h2>
+		<a href="admin/inicio">Acceso a administración</a>
+		
+		<div id="mensaje_login" style="margin: 1rem">Usuario no identificado</div>
+		<!-- Contenedor para el widget de Google Translate -->
+	    <div id="google_translate_element" style="width: fit-content;"></div>		
+	</header>
 	
-	<div id="mensaje_login" style="margin: 1rem">Usuario no identificado</div>
-</header>
+	<nav>
+		<a href="#" id="inicio" >Inicio</a>	
+		<a href="#" id="movies" >Listado de películas</a>	
+		<a href="#" id="registrarme" >Registro</a>	
+		<a href="#" id="login" >Iniciar sesión</a>	
+		<a href="#" id="#" >Ver mis pedidos</a>	
+		<a href="#" id="#" >Mis datos</a>	
+		<a href="#" id="logout" >Cerrar sesión</a>	
+		<a href="#" id="carrito" >Carrito</a>	
+	</nav>
+	
+	<!-- Contenedor de plantillas Mustache -->
+	<div id="contenedor"></div>
+	
+	<!-- Librerías -->
+	<script src="librerias_js/jquery.js"></script>
+	<script src="librerias_js/mustache.js"></script>
+	<script src="librerias_js/js.cookie.min.js"></script>
+	
+	<!-- Scripts -->
+	<script src="javascript/globales.js"></script>
+	<script src="javascript/funciones.js"></script>
+	<script src="javascript/carga_plantillas.js"></script>
+	<script src="javascript/setListenersMenu.js"></script>
+	<script src="javascript/setListenersContenedor.js"></script>
+	<script src="javascript/funcionesCheckout.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			gestionarSesionUsuario();
+			googleTranslateElementInit();
+		});
+	</script>
 
-<nav>
-	<a href="#" id="inicio" >Inicio</a>	
-	<a href="#" id="movies" >Listado de películas</a>	
-	<a href="#" id="registrarme" >Registro</a>	
-	<a href="#" id="login" >Iniciar sesión</a>	
-	<a href="#" id="#" >Ver mis pedidos</a>	
-	<a href="#" id="#" >Mis datos</a>	
-	<a href="#" id="logout" >Cerrar sesión</a>	
-	<a href="#" id="carrito" >Carrito</a>	
-</nav>
 
-<!-- Contenedor de plantillas Mustache -->
-<div id="contenedor"></div>
-
-<!-- Librerías -->
-<script src="librerias_js/jquery.js"></script>
-<script src="librerias_js/mustache.js"></script>
-<script src="librerias_js/js.cookie.min.js"></script>
-
-<!-- Scripts -->
-<script src="javascript/globales.js"></script>
-<script src="javascript/funciones.js"></script>
-<script src="javascript/carga_plantillas.js"></script>
-<script src="javascript/setListenersMenu.js"></script>
-<script src="javascript/setListenersContenedor.js"></script>
-<script src="javascript/funcionesCheckout.js"></script>
-
-<script>
-	$(document).ready(function() {
-		gestionarSesionUsuario();
-	});
-</script>
+    <!-- Agrega la librería de Google Translate -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        // Inicializa el widget de Google Translate
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'de,en,fr,pt,ca,it', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, gaTrack: true, gaId: 'UA-12345678-XX'}, 'google_translate_element');
+        }
+    </script>
 
 </body>
 </html>
