@@ -58,7 +58,7 @@ public class MoviesController {
 		
 		Map<String, String> formats = new HashMap<String, String>();
 		formats.put(MovieFormats.DVD, "DVD");
-		formats.put(MovieFormats.BR, "Blue-Ray");
+		formats.put(MovieFormats.BR, "Blu-Ray");
 		formats.put(MovieFormats.BR_4K, "4K Ultra HD + Blu-Ray");
 		model.addAttribute("formats", formats);
 		
@@ -72,7 +72,7 @@ public class MoviesController {
 			
 			Map<String, String> formats = new HashMap<String, String>();
 			formats.put(MovieFormats.DVD, "DVD");
-			formats.put(MovieFormats.BR, "Blue-Ray");
+			formats.put(MovieFormats.BR, "Blu-Ray");
 			formats.put(MovieFormats.BR_4K, "4K Ultra HD + Blu-Ray");
 			model.addAttribute("formats", formats);
 			
@@ -99,7 +99,7 @@ public class MoviesController {
 		
 		Map<String, String> formats = new HashMap<String, String>();
 		formats.put(MovieFormats.DVD, "DVD");
-		formats.put(MovieFormats.BR, "Blue-Ray");
+		formats.put(MovieFormats.BR, "Blu-Ray");
 		formats.put(MovieFormats.BR_4K, "4K Ultra HD + Blu-Ray");
 		model.addAttribute("formats", formats);
 		
@@ -113,7 +113,7 @@ public class MoviesController {
 			
 			Map<String, String> formats = new HashMap<String, String>();
 			formats.put(MovieFormats.DVD, "DVD");
-			formats.put(MovieFormats.BR, "Blue-Ray");
+			formats.put(MovieFormats.BR, "Blu-Ray");
 			formats.put(MovieFormats.BR_4K, "4K Ultra HD + Blu-Ray");
 			model.addAttribute("formats", formats);
 			

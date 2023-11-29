@@ -54,15 +54,29 @@ public class Movie {
 	@ManyToOne(cascade = {CascadeType.MERGE}, targetEntity = Genre.class, optional = false, fetch = FetchType.EAGER)
 	private Genre genre;
 	
-	@Transient
+	@Transient // con esto decimos a hibernate que no considere este campo
 	private int idGenre;
 	
-	@Transient // con esto decimos a hibernate que no considere este campo
+	@Transient
 	private MultipartFile imageUploaded;
 	
 	@Lob
 	@Column(name = "image_in_bytes")
 	private byte[] imageInBytes;
+	
+	@Transient
+	private MultipartFile extra1Uploaded;
+	
+	@Lob
+	@Column(name = "extra1_in_bytes")
+	private byte[] extra1InBytes;
+	
+	@Transient
+	private MultipartFile extra2Uploaded;
+	
+	@Lob
+	@Column(name = "extra2_in_bytes")
+	private byte[] extra2InBytes;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -207,6 +221,38 @@ public class Movie {
 
 	public void setImageInBytes(byte[] imageInBytes) {
 		this.imageInBytes = imageInBytes;
+	}
+	
+	public MultipartFile getExtra1Uploaded() {
+		return extra1Uploaded;
+	}
+
+	public void setExtra1Uploaded(MultipartFile extra1Uploaded) {
+		this.extra1Uploaded = extra1Uploaded;
+	}
+
+	public byte[] getExtra1InBytes() {
+		return extra1InBytes;
+	}
+
+	public void setExtra1InBytes(byte[] extra1InBytes) {
+		this.extra1InBytes = extra1InBytes;
+	}
+
+	public MultipartFile getExtra2Uploaded() {
+		return extra2Uploaded;
+	}
+
+	public void setExtra2Uploaded(MultipartFile extra2Uploaded) {
+		this.extra2Uploaded = extra2Uploaded;
+	}
+
+	public byte[] getExtra2InBytes() {
+		return extra2InBytes;
+	}
+
+	public void setExtra2InBytes(byte[] extra2InBytes) {
+		this.extra2InBytes = extra2InBytes;
 	}
 
 	public int getId() {

@@ -49,6 +49,8 @@
 	        <thead>
 	          <tr class="text-nowrap">
 	            <th th:text="#{text.image}">Imagen</th>
+	            <th th:text="#{text.extra1}">Extra 1</th>
+	            <th th:text="#{text.extra2}">Extra 2</th>
 	            <th th:text="#{text.title}">Título</th>
 	            <th th:text="#{text.director}">Director</th>
 	            <th th:text="#{text.country}">País</th>
@@ -67,6 +69,8 @@
 				
 	          <tr th:each="m : ${movies}">
 	            <th><img style="width: 4rem;padding: 0.5rem 0.1rem;" th:src="@{${ '../showMovieImage?id=' + m.id }}"/></th>
+	            <th><img style="width: 4rem;padding: 0.5rem 0.1rem;" th:src="@{${ '../showMovieExtra1?id=' + m.id }}"/></th>
+	            <th><img style="width: 4rem;padding: 0.5rem 0.1rem;" th:src="@{${ '../showMovieExtra2?id=' + m.id }}"/></th>
 	            <th th:text="${m.title}">Título</th>
 	            <th th:text="${m.director}">Director</th>
 	            <th th:text="${m.country}">País</th>

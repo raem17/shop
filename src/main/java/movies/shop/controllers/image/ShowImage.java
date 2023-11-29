@@ -36,6 +36,33 @@ public class ShowImage {
 		response.getOutputStream().close();
 	}
 	
+	@RequestMapping("showMovieExtra1")
+	public void showMovieExtra1 (@RequestParam("id") Integer id, HttpServletResponse response) throws IOException {
+		byte[] info = moviesService.getMovieByID(id).getExtra1InBytes();
+		
+		if (info == null) {
+			return;
+		}
+		
+		response.setContentType("image/jpeg, image/jpg, image/png, image/gif, image/webp, image/svg");
+		response.getOutputStream().write(info);
+		response.getOutputStream().close();
+	}
+	
+	@RequestMapping("showMovieExtra2")
+	// Tiene que ser Integer no int
+	public void showMovieExtra2 (@RequestParam("id") Integer id, HttpServletResponse response) throws IOException {
+		byte[] info = moviesService.getMovieByID(id).getExtra2InBytes();
+		
+		if (info == null) {
+			return;
+		}
+		
+		response.setContentType("image/jpeg, image/jpg, image/png, image/gif, image/webp, image/svg");
+		response.getOutputStream().write(info);
+		response.getOutputStream().close();
+	}
+	
 	@RequestMapping("showUserImage")
 	// Tiene que ser Integer no int
 	public void showUserImage (@RequestParam("id") Integer id, HttpServletResponse response) throws IOException {

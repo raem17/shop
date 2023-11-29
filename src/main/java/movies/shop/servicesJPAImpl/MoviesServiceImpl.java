@@ -33,6 +33,8 @@ public class MoviesServiceImpl implements MoviesService {
 		
 		try {
 			newMovie.setImageInBytes(newMovie.getImageUploaded().getBytes());
+			newMovie.setExtra1InBytes(newMovie.getExtra1Uploaded().getBytes());
+			newMovie.setExtra2InBytes(newMovie.getExtra2Uploaded().getBytes());
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -83,14 +85,42 @@ public class MoviesServiceImpl implements MoviesService {
 		movieUpdate.setGenre(g);
 		movieUpdate.setActivated(true);
 		
+		// image
 		if (movieUpdate.getImageUploaded().getSize() == 0) {
 			Movie previousMovie = entityManager.find(Movie.class, movieUpdate.getId());
-			
 			movieUpdate.setImageInBytes(previousMovie.getImageInBytes());
 			
 		} else {
 			try {
 				movieUpdate.setImageInBytes(movieUpdate.getImageUploaded().getBytes());
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// extra 1
+		if (movieUpdate.getExtra1Uploaded().getSize() == 0) {
+			Movie previousMovie = entityManager.find(Movie.class, movieUpdate.getId());
+			movieUpdate.setExtra1InBytes(previousMovie.getExtra1InBytes());
+			
+		} else {
+			try {
+				movieUpdate.setExtra1InBytes(movieUpdate.getExtra1Uploaded().getBytes());
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// extra 2
+		if (movieUpdate.getExtra2Uploaded().getSize() == 0) {
+			Movie previousMovie = entityManager.find(Movie.class, movieUpdate.getId());
+			movieUpdate.setExtra2InBytes(previousMovie.getExtra2InBytes());
+			
+		} else {
+			try {
+				movieUpdate.setExtra2InBytes(movieUpdate.getExtra2Uploaded().getBytes());
 				
 			} catch (IOException e) {
 				e.printStackTrace();

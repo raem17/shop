@@ -109,6 +109,28 @@
 				<input th:field="*{imageUploaded}" type="file" class="form-control"/>
 				<span class="sizeAdvice" th:text="#{text.maxSize}">Tamaño máximo permitido: 1 MB.</span>
 			</div>	
+				
+			<div class="adminFormField">				
+				<label th:text="#{text.currentExtra1}"></label>
+				<img th:src="@{'../showMovieExtra1?id=' + ${movieEdit.id}}" />
+			</div>
+				
+			<div class="adminFormField">				
+				<label th:text="#{text.newExtra1}">Imagen nueva:</label>
+				<input th:field="*{extra1Uploaded}" type="file" class="form-control"/>
+				<span class="sizeAdvice" th:text="#{text.maxSize}">Tamaño máximo permitido: 1 MB.</span>
+			</div>	
+				
+			<div class="adminFormField">				
+				<label th:text="#{text.currentExtra2}"></label>
+				<img th:src="@{'../showMovieExtra2?id=' + ${movieEdit.id}}" />
+			</div>
+				
+			<div class="adminFormField">				
+				<label th:text="#{text.newExtra2}">Imagen nueva:</label>
+				<input th:field="*{extra2Uploaded}" type="file" class="form-control"/>
+				<span class="sizeAdvice" th:text="#{text.maxSize}">Tamaño máximo permitido: 1 MB.</span>
+			</div>	
 			
 			<input type="hidden" th:field="*{id}"/>
 
