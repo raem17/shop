@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity(name = "cart_products")
 public class CartProduct {
@@ -19,6 +22,9 @@ public class CartProduct {
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 	
+	@NotNull(message = "Debes introducir un número.")
+	@Min(value = 1, message = "La cantidad debe estar entre 1 y 20.")
+	@Max(value = 20 , message = "La cantidad debe estar entre 1 y 20.")
 	private int quantity;
 	
 	@Id

@@ -25,10 +25,10 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "movies")
 public class Movie {
 	
-	@Size(min = 1, max = 70, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ç\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres ¡!&()¿?ç-:")
+			+ "números y los caracteres: ¡!&()¿?ç-:")
 	private String title;
 	
 	@NotNull(message = "Debes introducir un número.")
@@ -42,7 +42,7 @@ public class Movie {
 	
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ç.,\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres ¡!&()¿?ç.,-:")
+			+ "números y los caracteres: ¡!&()¿?ç.,-:")
 	@Column(columnDefinition = "TEXT")
 	private String synopsis;
 	
@@ -83,32 +83,32 @@ public class Movie {
 	private int id;
 	
 	@NotNull(message = "Debes introducir un número.")
-	@Min(value = 1, message = "La duración debe estar entre 1 y 60000 minutos.")
-	@Max(value = 60000 , message = "La duración debe estar entre 1 y 60000 minutos.")
+	@Min(value = 1, message = "La duración debe estar entre 1 y 60.000 minutos.")
+	@Max(value = 60000 , message = "La duración debe estar entre 1 y 60.000 minutos.")
 	private int length_min;
 	
 	private boolean activated;
 	
-	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres ç-")
+			+ "números y los caracteres: ç-")
 	private String director;
 	
-	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres ç-")
+			+ "números y los caracteres: ç-")
 	private String country;
 	
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "^[0-9]{13}$", message = "El campo EAN debe contener exactamente 13 dígitos numéricos.")
 	private String ean;
 	
-	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres ç-")
+			+ "números y los caracteres: ç-")
 	private String editor;
 	
 	private String format;

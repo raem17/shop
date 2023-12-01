@@ -16,12 +16,12 @@ public interface OrdersService {
     
     // Ajax functions
     void processStep1(int userID, String firstName, String lastName, String email, String phoneNumber, String address, 
-        String addressDetails, int postalCode, String town, String province);
+        String addressDetails, String postalCode, String town, String province);
     
     void processStep2(int userID, String shippingNotes, String contactName, String contactPhone, String contactEmail);
     
     void processStep3(int userID, String cardType, String cardHolder, String cardNumber, String cardExpiration, 
-        int cardCvv);
+    		String cardCvv);
     
     OrderSummary getOrderSummary(int userID);
     

@@ -54,7 +54,7 @@ public class OrdersServiceImpl implements OrdersService {
 
 	@Override
 	public void processStep1(int userID, String firstName, String lastName, String email, String phoneNumber,
-			String address, String addressDetails, int postalCode, String town, String province) {
+			String address, String addressDetails, String postalCode, String town, String province) {
 		// cada usuario podra tener como maximo un solo pedido en estado "en proceso"
 		// ese es el pedido donde rellenaremos los datos de envio, los de pago y demas
 		// si el usuario finaliza un pedido en estado "en proceso", el estado de dicho pedido pasara a ser "terminado"
@@ -91,7 +91,7 @@ public class OrdersServiceImpl implements OrdersService {
 
 	@Override
 	public void processStep3(int userID, String cardType, String cardHolder, String cardNumber, String cardExpiration,
-			int cardCvv) {
+			String cardCvv) {
 		Order o = getCurrentOrder(userID);
 		
 		o.setCardType(cardType);

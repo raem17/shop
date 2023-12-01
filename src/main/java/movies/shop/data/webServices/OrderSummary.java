@@ -15,7 +15,7 @@ public class OrderSummary {
     private String phoneNumber;  // Teléfono
     private String address;  // Dirección
     private String addressDetails;  // Detalles de la dirección
-    private int postalCode;  // Código postal
+    private String postalCode;  // Código postal
     private String town;  // Localidad
     private String province;  // Provincia
     
@@ -30,16 +30,16 @@ public class OrderSummary {
     private String cardHolder;  // Titular de la tarjeta
     private String cardNumber;  // Número de tarjeta
     private String cardExpiration;  // Caducidad de la tarjeta
-    private int cardCvv;  // CVV de la tarjeta
+    private String cardCvv;  // CVV de la tarjeta
 	
 	public OrderSummary() {
 		
 	}
 
 	public OrderSummary(List<Map<String, Object>> cartProducts, String firstName, String lastName, String email,
-			String phoneNumber, String address, String addressDetails, int postalCode, String town, String province,
+			String phoneNumber, String address, String addressDetails, String postalCode, String town, String province,
 			String shippingNotes, String contactName, String contactPhone, String contactEmail, String cardType,
-			String cardHolder, String cardNumber, String cardExpiration, int cardCvv) {
+			String cardHolder, String cardNumber, String cardExpiration, String cardCvv) {
 		super();
 		this.cartProducts = cartProducts;
 		this.firstName = firstName;
@@ -118,11 +118,11 @@ public class OrderSummary {
 		this.addressDetails = addressDetails;
 	}
 
-	public int getPostalCode() {
+	public String getPostalCode() {
 		return postalCode;
 	}
 
-	public void setPostalCode(int postalCode) {
+	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
 
@@ -206,11 +206,11 @@ public class OrderSummary {
 		this.cardExpiration = cardExpiration;
 	}
 
-	public int getCardCvv() {
+	public String getCardCvv() {
 		return cardCvv;
 	}
 
-	public void setCardCvv(int cardCvv) {
+	public void setCardCvv(String cardCvv) {
 		this.cardCvv = cardCvv;
 	}
 	

@@ -27,7 +27,7 @@ public class WebServiceOrders {
 		String res = "";
 		User u = (User) request.getSession().getAttribute("usuario_identificado");
 		
-		ordersService.processStep1(u.getId(), firstName, lastName, email, phoneNumber, address, addressDetails, Integer.parseInt(postalCode), 
+		ordersService.processStep1(u.getId(), firstName, lastName, email, phoneNumber, address, addressDetails, postalCode, 
 		town, province);
 		
 		res = "ok";
@@ -52,7 +52,7 @@ public class WebServiceOrders {
 	String cardCvv) {
 		
 		User u = (User) request.getSession().getAttribute("usuario_identificado");
-		ordersService.processStep3(u.getId(), cardType, cardHolder, cardNumber, cardExpiration, Integer.parseInt(cardCvv));
+		ordersService.processStep3(u.getId(), cardType, cardHolder, cardNumber, cardExpiration, cardCvv);
 		
 		OrderSummary summary = ordersService.getOrderSummary(u.getId());
 		
