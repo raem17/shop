@@ -34,12 +34,19 @@
               class="btn btn-outline-secondary dropdown-toggle"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              th:text="#{text.lang}"
-            >Idioma
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="?idioma=es" th:text="#{text.es}">Español</a></li>
-              <li><a class="dropdown-item" href="?idioma=en" th:text="#{text.en}">Inglés</a></li>
+              style="display: flex; align-items: center;"
+            >	
+            	<i class="bx bx-globe me-2"></i>
+            	<p th:text="#{text.lang}"></p>
+            </button>			                    
+
+            <ul class="dropdown-menu" style="text-align: center;">
+              <li><a class="dropdown-item" href="?idioma=es" th:text="#{text.es}"></a></li>
+              <li><a class="dropdown-item" href="?idioma=en" th:text="#{text.en}"></a></li>
+              <li><a class="dropdown-item" href="?idioma=ca" th:text="#{text.ca}"></a></li>
+              <li><a class="dropdown-item" href="?idioma=pt" th:text="#{text.pt}"></a></li>
+              <li><a class="dropdown-item" href="?idioma=fr" th:text="#{text.fr}"></a></li>
+              <li><a class="dropdown-item" href="?idioma=de" th:text="#{text.de}"></a></li>
             </ul>
         </div>
     </div>
