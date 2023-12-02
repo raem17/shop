@@ -41,6 +41,10 @@ main > form > div.adminFormField > label {
 	font-size: 1rem;
 }
 
+main > form > div.adminFormField > label::after {
+	content: ":";
+}
+
 main > form > div.adminFormField > input[type="text"], input[type="number"], textarea, select {
 	padding: 0.5rem 0.7rem;
 	outline: none;

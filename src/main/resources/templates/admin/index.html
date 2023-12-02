@@ -26,6 +26,23 @@
 <body>
 
 	<div th:insert="fragments/general.html :: menu"></div>
+	
+	<div style="display: flex;justify-content: end;">
+        <div class="btn-group m-3">
+            <button
+              type="button"
+              class="btn btn-outline-secondary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              th:text="#{text.lang}"
+            >Idioma
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="?idioma=es" th:text="#{text.es}">Español</a></li>
+              <li><a class="dropdown-item" href="?idioma=en" th:text="#{text.en}">Inglés</a></li>
+            </ul>
+        </div>
+    </div>
 
     <h2 style="text-align: center;margin:2rem;" th:text="#{text.welcome}">Estás en la administración de la tienda</h2>
     

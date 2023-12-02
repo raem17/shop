@@ -11,23 +11,6 @@
 
     <div th:fragment="menu">
 		
-		<div style="display: flex;justify-content: end;">
-	        <div class="btn-group m-3">
-	            <button
-	              type="button"
-	              class="btn btn-outline-secondary dropdown-toggle"
-	              data-bs-toggle="dropdown"
-	              aria-expanded="false"
-	              th:text="#{text.lang}"
-	            >Idioma
-	            </button>
-	            <ul class="dropdown-menu">
-	              <li><a class="dropdown-item" href="?idioma=es" th:text="#{text.es}">Español</a></li>
-	              <li><a class="dropdown-item" href="?idioma=en" th:text="#{text.en}">Inglés</a></li>
-	            </ul>
-	        </div>
-	    </div>
-		
         <!-- NavBar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
             <div class="container-fluid">
@@ -113,7 +96,7 @@
                 </div>
             </div>
         </nav>
-        <!-- NavBar -->
+        <!-- NavBar End -->
     </div>
     
 </body>

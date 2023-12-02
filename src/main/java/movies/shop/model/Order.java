@@ -29,14 +29,12 @@ public class Order {
     // Data from step 1
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
     private String firstName;  // Nombre
 	
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
     private String lastName;  // Apellidos
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
@@ -84,8 +82,7 @@ public class Order {
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
     private String contactName;  // Nombre de contacto
     
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
