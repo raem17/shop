@@ -48,14 +48,14 @@ public class Order {
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑºç\\-]+", message = "El campo solo puede contener letras, "
 			+ "números y los caracteres: ºç-")
     private String address;  // Dirección
     
 	@Size(min = 1, max = 250, message = "El campo debe tener entre 1 y 250 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ç\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: º¡!&()¿?ç-:")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ºç\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: ¡!&()¿?ºç-:")
     private String addressDetails;  // Detalles de la dirección
     
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
@@ -76,8 +76,8 @@ public class Order {
     // Data from step 2
 	@Size(min = 1, max = 250, message = "El campo debe tener entre 1 y 250 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ç\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: º¡!&()¿?ç-:")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çº\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: ¡!&()¿?çº-:")
     private String shippingNotes;  // Notas de envío
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
@@ -98,7 +98,7 @@ public class Order {
     // Data from step 3
 	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ\\-]+", message = "El campo solo puede contener letras, "
 			+ "números y los caracteres: -")
     private String cardType;  // Tipo de tarjeta
     
