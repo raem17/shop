@@ -10,12 +10,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity(name="orders")
 public class Order {
+	
+	/* READ ME
+	Problema:
+	El código presentaba un problema al procesar el paso 1 del formulario del check-out debido a las validaciones de campos que aún 
+	no se habían completado en pasos posteriores. En particular, las anotaciones @NotBlank estaban causando errores, ya que se 
+	aplicaban a campos que no estaban destinados a ser completados en el paso actual.
+	
+	Solución:
+	Se resolvió el problema eliminando las anotaciones @NotBlank
+	
+	Nota:
+	Cuando se trabaje con formularios divididos en varios pasos y campos que se completan progresivamente, es crucial adaptar las validaciones 
+	para cada paso. Evitar la aplicación de validaciones innecesarias en campos no relevantes para el paso actual puede mejorar la usabilidad y 
+	evitar errores prematuros. Considerar el uso de grupos de validación o cambiar el enfoque de validación según el flujo del formulario puede 
+	ser una estrategia eficaz para abordar este tipo de situaciones.
+	*/
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,95 +43,83 @@ public class Order {
 
     // Data from step 1
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
     private String firstName;  // Nombre
 	
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
     private String lastName;  // Apellidos
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Ingrese una dirección de correo electrónico válida.")
     private String email;  // Email
 	
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "^\\+34\\d{9}$", message = "Ingrese un número de teléfono válido en España.")
+	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
+	@Pattern(regexp = "^(\\+34)?\\d{9}$", message = "Ingrese un número de teléfono válido en España.")
 	private String phoneNumber;  // Teléfono en España
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑºç\\-]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ºç-")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑçº\\-]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: çº-")
     private String address;  // Dirección
     
 	@Size(min = 1, max = 250, message = "El campo debe tener entre 1 y 250 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ºç\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ¡!&()¿?ºç-:")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çº.,\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: ¡!&()¿?çº.,-:")
     private String addressDetails;  // Detalles de la dirección
     
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
+	@Size(min = 5, max = 5, message = "El campo debe tener exactamente 5 dígitos.")
 	@Pattern(regexp = "^\\d{5}$", message = "Ingrese un código postal válido en España.")
 	private String postalCode;  // Código postal en España
 
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
     private String town;  // Localidad
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
     private String province;  // Provincia
     
     
     // Data from step 2
 	@Size(min = 1, max = 250, message = "El campo debe tener entre 1 y 250 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çº\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ¡!&()¿?çº-:")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çº.,\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: ¡!&()¿?çº.,-:")
     private String shippingNotes;  // Notas de envío
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
     private String contactName;  // Nombre de contacto
     
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "^\\+34\\d{9}$", message = "Ingrese un número de teléfono válido en España.")
+	// ¡Aviso! Este campo no se valida con la anotación @Pattern, sino en su setter
+	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
     private String contactPhone;  // Teléfono de contacto
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Ingrese una dirección de correo electrónico válida.")
     private String contactEmail;  // Email de contacto
     
     
     // Data from step 3
 	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ\\-]+", message = "El campo solo puede contener letras, "
 			+ "números y los caracteres: -")
     private String cardType;  // Tipo de tarjeta
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
 	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
 			+ "números y los caracteres: ç-")
     private String cardHolder;  // Titular de la tarjeta
     
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "^(\\d{4}[- ]){3}\\d{4}|\\d{16}$", message = "Ingrese un número de tarjeta válido.")
-    private String cardNumber;  // Número de tarjeta
+	@Size(min = 13, max = 20, message = "El campo debe tener entre 13 y 20 caracteres.")
+	@Pattern(regexp = "^\\d{13,20}$", message = "Ingrese un número de tarjeta válido sin guiones.")    
+	private String cardNumber;  // Número de tarjeta
     
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "^(0[1-9]|1[0-2])/(1[8-9]|2[0-9]|3[0-9])$", message = "Ingrese una fecha de expiración de tarjeta válida (MM/YY).")
+	@Size(min = 5, max = 5, message = "El campo debe tener este formato: 01/25.")
+	@Pattern(regexp = "^(0[1-9]|1[0-2])/(0[1-9]|[1-9][0-9])$", message = "Ingrese una fecha de expiración de tarjeta válida (MM/YY).")
     private String cardExpiration;  // Caducidad de la tarjeta
     
-	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
+	@Size(min = 3, max = 3, message = "El campo debe tener exactamente 3 dígitos.")
 	@Pattern(regexp = "^\\d{3}$", message = "Ingrese un código CVV de tarjeta válido.")
 	private String cardCvv;  // CVV de la tarjeta
 
@@ -303,8 +306,12 @@ public class Order {
 		return contactPhone;
 	}
 
-	public void setContactPhone(String contactPhone) {
-		this.contactPhone = contactPhone;
+	public void setContactPhone(String contactPhone) throws IllegalArgumentException {
+		if (contactPhone.matches("^(\\+34)?\\d{9}$")) {
+			this.contactPhone = contactPhone;
+		} else {
+			throw new IllegalArgumentException("Invalid contactPhone argument.");
+		}
 	}
 
 	public String getContactEmail() {

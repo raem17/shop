@@ -18,7 +18,7 @@ public interface OrdersService {
     void processStep1(int userID, String firstName, String lastName, String email, String phoneNumber, String address, 
         String addressDetails, String postalCode, String town, String province);
     
-    void processStep2(int userID, String shippingNotes, String contactName, String contactPhone, String contactEmail);
+    void processStep2(int userID, String shippingNotes, String contactName, String contactPhone, String contactEmail) throws IllegalArgumentException;
     
     void processStep3(int userID, String cardType, String cardHolder, String cardNumber, String cardExpiration, 
     		String cardCvv);

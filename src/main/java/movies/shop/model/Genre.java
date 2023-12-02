@@ -27,8 +27,8 @@ public class Genre {
 	
 	@Size(min = 1, max = 250, message = "El campo debe tener entre 1 y 250 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ç.,\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ¡!&()¿?ç.,-:")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çº.,\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: ¡!&()¿?çº.,-:")
 	private String description;
 	
 	// Cascade indica que se puede propagar una operacion desde el dato actual

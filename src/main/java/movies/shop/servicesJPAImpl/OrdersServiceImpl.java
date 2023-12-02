@@ -60,7 +60,7 @@ public class OrdersServiceImpl implements OrdersService {
 		// si el usuario finaliza un pedido en estado "en proceso", el estado de dicho pedido pasara a ser "terminado"
 		// puede haber tantos pedidos en estado "terminado" como se quiera
 		Order o = getCurrentOrder(userID);
-		
+				
 		o.setFirstName(firstName);
 		o.setLastName(lastName);
 		o.setEmail(email);
@@ -78,11 +78,12 @@ public class OrdersServiceImpl implements OrdersService {
 
 	@Override
 	public void processStep2(int userID, String shippingNotes, String contactName, String contactPhone,
-			String contactEmail) {
+			String contactEmail) throws IllegalArgumentException {
 		Order o = getCurrentOrder(userID);
 		
 		o.setShippingNotes(shippingNotes);
 		o.setContactName(contactName);
+		// An IllegalArgumentException will be thrown here if contactPhone is invalid.
 		o.setContactPhone(contactPhone);
 		o.setContactEmail(contactEmail);
 		

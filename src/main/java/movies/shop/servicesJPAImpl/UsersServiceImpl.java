@@ -47,7 +47,7 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public User getUserByEmailAndPass(String email, String pass) {
-        String jpql = "SELECT u FROM User u WHERE u.email = :email AND u.pass = :pass";
+        String jpql = "SELECT u FROM User u WHERE BINARY(u.email) = :email AND BINARY(u.pass) = :pass";
         TypedQuery<User> query = entityManager.createQuery(jpql, User.class);
         query.setParameter("email", email);
         query.setParameter("pass", pass);
