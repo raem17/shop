@@ -43,11 +43,11 @@ public class Order {
 
     // Data from step 1
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑçÇ\\-]+", message = "El campo solo puede contener letras y los caracteres: çÇ-")
     private String firstName;  // Nombre
 	
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑçÇ\\-]+", message = "El campo solo puede contener letras y los caracteres: çÇ-")
     private String lastName;  // Apellidos
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
@@ -59,13 +59,13 @@ public class Order {
 	private String phoneNumber;  // Teléfono en España
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑçº\\-]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: çº-")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑçÇº\\-]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: çÇº-")
     private String address;  // Dirección
     
 	@Size(min = 1, max = 250, message = "El campo debe tener entre 1 y 250 caracteres.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çº.,\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ¡!&()¿?çº.,-:")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çÇº.,\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: ¡!&()¿?çÇº.,-:")
     private String addressDetails;  // Detalles de la dirección
     
 	@Size(min = 5, max = 5, message = "El campo debe tener exactamente 5 dígitos.")
@@ -73,22 +73,22 @@ public class Order {
 	private String postalCode;  // Código postal en España
 
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑçÇ\\-]+", message = "El campo solo puede contener letras y los caracteres: çÇ-")
     private String town;  // Localidad
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑçÇ\\-]+", message = "El campo solo puede contener letras y los caracteres: çÇ-")
     private String province;  // Provincia
     
     
     // Data from step 2
 	@Size(min = 1, max = 250, message = "El campo debe tener entre 1 y 250 caracteres.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çº.,\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ¡!&()¿?çº.,-:")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çÇº.,\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: ¡!&()¿?çÇº.,-:")
     private String shippingNotes;  // Notas de envío
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑçÇ\\-]+", message = "El campo solo puede contener letras y los caracteres: çÇ-")
     private String contactName;  // Nombre de contacto
     
 	// ¡Aviso! Este campo no se valida con la anotación @Pattern, sino en su setter
@@ -107,8 +107,8 @@ public class Order {
     private String cardType;  // Tipo de tarjeta
     
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑçÇ\\-]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: çÇ-")
     private String cardHolder;  // Titular de la tarjeta
     
 	@Size(min = 13, max = 20, message = "El campo debe tener entre 13 y 20 caracteres.")

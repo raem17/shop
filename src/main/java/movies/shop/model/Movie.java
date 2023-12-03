@@ -27,8 +27,8 @@ public class Movie {
 	
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?ç\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ¡!&()¿?ç-:")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çÇ\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: ¡!&()¿?çÇ-:")
 	private String title;
 	
 	@NotNull(message = "Debes introducir un número.")
@@ -41,8 +41,8 @@ public class Movie {
 	private CartProduct cartProduct;
 	
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çº.,\\-:]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ¡!&()¿?çº.,-:")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ¡!&()¿?çÇº.,\\-:]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: ¡!&()¿?çÇº.,-:")
 	@Column(columnDefinition = "TEXT")
 	private String synopsis;
 	
@@ -91,12 +91,12 @@ public class Movie {
 	
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑçÇ\\-]+", message = "El campo solo puede contener letras y los caracteres: çÇ-")
 	private String director;
 	
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z áéíóú´ÁÉÍÓÚñÑçÇ\\-]+", message = "El campo solo puede contener letras y los caracteres: çÇ-")
 	private String country;
 	
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
@@ -105,8 +105,8 @@ public class Movie {
 	
 	@Size(min = 1, max = 150, message = "El campo debe tener entre 1 y 150 caracteres.")
 	@NotBlank(message = "El campo no puede estar formado únicamente por espacios.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑç\\-]+", message = "El campo solo puede contener letras, "
-			+ "números y los caracteres: ç-")
+	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑçÇ\\-]+", message = "El campo solo puede contener letras, "
+			+ "números y los caracteres: çÇ-")
 	private String editor;
 	
 	private String format;
