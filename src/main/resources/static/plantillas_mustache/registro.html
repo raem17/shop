@@ -1,14 +1,53 @@
-<div>
-	Introduce tus datos para registrarte: <br/>
+<!-- id o name tiene que coincidir con los atributos de la clase User -->
+<form id="form_registro_usuario" class="formBox">
+	<h2>Registro</h2>
 	
-	<!-- id o name tiene que coincidir con los atributos de la clase User -->
-	<form id="form_registro_usuario">
-		Nombre: <input type="text" name="first_name" id="first_name"> <br/>
-		Apellidos: <input type="text" name="last_name" id="last_name"> <br/>
-		Email: <input type="text" name="email" id="email"> <br/>
-		Contraseña: <input type="text" name="pass" id="pass"> <br/>
-		Avatar (opcional): <input type="file" name="avatar" id="avatar"> <br/>
-		
-		<input type="submit" value="REGISTRARSE"/>
-	</form>
-</div>
+    <div class="form-group properNoun">
+        <div class="field">
+            <label>Nombre</label>
+            <input type="text" maxlength="150" name="first_name" id="first_name">
+        </div>
+
+        <span class="noError"></span>
+    </div>	
+	
+    <div class="form-group properNoun">
+        <div class="field">
+            <label>Apellidos</label>
+            <input type="text" maxlength="150" name="last_name" id="last_name">
+        </div>
+
+        <span class="noError"></span>
+    </div>	
+
+    <div class="form-group email">
+        <div class="field">
+            <label>Email</label>
+            <input type="email" maxlength="150" name="email" id="email">
+        </div>
+
+        <span class="noError"></span>
+    </div>	
+    
+    <div class="form-group pw">
+        <div class="field">
+            <label>Contraseña</label>
+            <input type="text" maxlength="50" name="pass" id="pass">
+        </div>
+
+        <span class="noError"></span>
+    </div>    
+    
+    <div>
+        <label>Avatar</label>
+		<input type="file" name="avatar" id="avatar">
+    </div>    
+        
+    <!-- Submit -->
+    <div class="submitFormBox">
+        <input class="sendForm" type="submit" value="REGISTRARSE">
+        <p class="submitErrorMsg"></p>
+    </div>       
+</form>
+
+<script src="javascript/validaciones.js"></script>

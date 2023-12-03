@@ -1,28 +1,48 @@
-<div>Paso 2</div>
-<div>Introduce tus datos de contacto:</div>
+<form class="formBox" action="#">
+	<h2>Paso 2: Introduce tus datos de contacto</h2>
+	
+    <div class="form-group description">
+        <div class="field">
+            <label>Notas de envío</label>
+            <textarea maxlength="250" id="notasEnvio"></textarea>
+        </div>
 
-<div class="form">		
-	<div>
-		<label>Notas de envío</label>
-		<textarea id="notasEnvio"></textarea>
-	</div>
+        <span class="noError"></span>
+    </div> 	
 	
-	<div>
-		<label>Nombre de contacto</label>
-		<input type="text" id="nombreContacto"/>
-	</div>
-	
-	<div>
-		<label>Teléfono de contacto</label>
-		<input type="text" id="telefonoContacto"/>
-	</div>
-	
-	<div>
-		<label>Email de contacto</label>
-		<input type="email" id="emailContacto"/>
-	</div>
-	
-	<button id="checkout2_aceptar">ACEPTAR</button>
-	
-</div>
+    <div class="form-group properNoun">
+        <div class="field">
+            <label>Nombre de contacto</label>
+            <input type="text" maxlength="150" id="nombreContacto">
+        </div>
 
+        <span class="noError"></span>
+    </div>	
+    
+    <div class="form-group phoneNumber">
+        <div class="field">
+            <label>Teléfono de contacto</label>
+            <input type="text" maxlength="12" id="telefonoContacto">
+        </div>
+
+        <span class="noError"></span>
+    </div>
+    
+	<div class="form-group email">
+	    <div class="field">
+	        <label>Email de contacto</label>
+	        <input type="email" maxlength="150" id="emailContacto">
+	    </div>
+	
+	    <span class="noError"></span>
+	</div>      
+    
+    <!-- Submit -->
+    <div class="submitFormBox">
+		<input type="submit" class="sendForm" id="checkout2_aceptar" value="ACEPTAR"></input>
+        <p class="submitErrorMsg"></p>
+    </div>	
+	
+</form>
+
+<script src="javascript/validaciones.js"></script>

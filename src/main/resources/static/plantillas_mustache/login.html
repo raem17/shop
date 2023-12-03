@@ -1,15 +1,34 @@
-<div>
-	Introduce tus datos para iniciar sesión: <br/>
+<form id="form_login" class="formBox">
 	
-	<form id="form_login">
-		Email: <input type="text" name="email" id="email"> <br/>
-		Contraseña: <input type="text" name="pass" id="pass"> <br/>
-		
-		<div>
-			<input type="checkbox" checked="true" id="recordar_datos"/>
-			<label>Recordarme</label>
-		</div>
-		
-		<input type="submit" value="Acceder"/>
-	</form>
-</div>
+	<h2>Iniciar sesión</h2>
+	
+	<div class="form-group email">
+        <div class="field">
+            <label>Email</label>
+            <input type="email" maxlength="150" name="email" id="email">
+        </div>
+
+        <span class="noError"></span>
+    </div>
+	
+    <div class="form-group pw">
+        <div class="field">
+            <label>Contraseña</label>
+            <input type="text" maxlength="50" name="pass" id="pass">
+        </div>
+
+        <span class="noError"></span>
+    </div>		
+	
+	<div>
+		<input type="checkbox" checked="true" id="recordar_datos"/>
+		<label>Recordarme</label>
+	</div>
+	
+    <div class="submitFormBox">
+        <input class="sendForm" type="submit" value="ACCEDER">
+        <p class="submitErrorMsg"></p>
+    </div>		
+</form>
+
+<script src="javascript/validaciones.js"></script>

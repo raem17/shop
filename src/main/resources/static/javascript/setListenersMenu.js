@@ -12,27 +12,76 @@ $("#registrarme").click(function(){
 	$("#contenedor").html(plantillaRegistro);
 	
 	$("#form_registro_usuario").submit(function (e) {
+	    let errores = $(this).closest("form.formBox").find("span.error").length
+	    let inputs = $(this).closest("form.formBox").find('div.field').find("input")
+	    let textareas = $(this).closest("form.formBox").find("textarea")
+	    let campoVacio = false
+	    let spanMsg = $(".submitErrorMsg")
+	
+	    inputs.each(function(index, input) {
+	        if ($(input).val().trim() == "") {
+	            campoVacio = true
+	            $(input).closest('div.form-group').find('span').addClass("error")
+	        }
+	    })
+	
+	    textareas.each(function(index, textarea) {
+	        if ($(textarea).val().trim() == "") {
+	            campoVacio = true
+	            $(textarea).closest('div.form-group').find('span').addClass("error")
+	        }
+	    })
+	
+	    if (errores == 0 && campoVacio == false) {
+	        // Aquí estaría la acción del botón teniendo todos los campos correctos
+	        spanMsg.text("")
 			let formulario = document.forms[0];
 			let formData = new FormData(formulario);
 			
+			// Crear un nuevo objeto FormData para almacenar los datos actualizados
+			let formDataActualizado = new FormData();
+			
+			// Recorre todos los elementos del formulario para enviar los datos al servidor con un .trim()
+			for (let pair of formData) {
+			    // pair[0] es el nombre del campo, pair[1] es el valor
+			    let fieldName = pair[0];
+			    let originalValue = pair[1];
+			
+			    // Verifica si el campo no es de tipo 'file'
+			    if (formulario.elements[fieldName].type !== 'file') {
+			        // Aplica trim al valor solo si no es un campo de tipo 'file'
+			        let trimmedValue = originalValue.trim();
+			
+			        // Agrega el par clave/valor actualizado al nuevo FormData
+			        formDataActualizado.append(fieldName, trimmedValue);
+			    } else {
+			        // Si es un campo de tipo 'file', simplemente copia el par clave/valor al nuevo FormData
+			        formDataActualizado.append(fieldName, originalValue);
+			    }
+			}			
+			
 			$.ajax("webServiceUsers/userRegister",{
 				type: "POST",
-				data: formData,
+				data: formDataActualizado,
 				cache: false,
 				contentType: false,
 				processData: false,
-	            success: function(e) {
+	            success: function() {
 	                // Manejar la respuesta del servidor
-	                alert("Te has registrado correctamente: " + e);
+	                alert("Te has registrado correctamente");
 	            },
-	            error: function(error) {
+	            error: function() {
 	                // Manejar errores
-	                alert("Error: " + error);
+	                alert("No has podido registrarte, revisa tus datos.");
 	            }
-			})
-			
-			// evitar envio de form, todo el cliente se gestiona con javascript
-			e.preventDefault()
+			})	        
+	        
+	    } else {
+	        spanMsg.text("Rellene correctamente todos los campos.")
+	    }		
+		
+		// evitar envio de form, todo el cliente se gestiona con javascript
+		e.preventDefault()
 		}
 	) // end registro
 });
@@ -41,24 +90,52 @@ $("#login").click(function() {
 	$("#contenedor").html(plantillaLogin);
 	
 	$("#form_login").submit(function(e) {
-		$.post("webServiceUsers/userLogin", { email: $("#email").val(), pass: $("#pass").val() } ).done(function(res) {
-			if (res.split(", ")[0] == "ok") {
-				nombre_login = res.split(", ")[1];
-				$("#mensaje_login").html("Identificado como: " + nombre_login)
-				
-				if ( $("#recordar_datos").prop('checked') ) {
-					// si esto se cumple es que se dejo activado el checkbox de recordar datos
-					Cookies.set("email", $("#email").val(), {expires: 100} )
-					Cookies.set("pass", $("#pass").val(), {expires: 100} )
-					Cookies.set("username", nombre_login, {expires: 100} )
+	    let errores = $(this).closest("form.formBox").find("span.error").length
+	    let inputs = $(this).closest("form.formBox").find("input")
+	    let textareas = $(this).closest("form.formBox").find("textarea")
+	    let campoVacio = false
+	    let spanMsg = $(".submitErrorMsg")
+	
+	    inputs.each(function(index, input) {
+	        if ($(input).val().trim() == "") {
+	            campoVacio = true
+	            $(input).closest('div.form-group').find('span').addClass("error")
+	        }
+	    })
+	
+	    textareas.each(function(index, textarea) {
+	        if ($(textarea).val().trim() == "") {
+	            campoVacio = true
+	            $(textarea).closest('div.form-group').find('span').addClass("error")
+	        }
+	    })
+	
+	    if (errores == 0 && campoVacio == false) {
+	        // Aquí estaría la acción del botón teniendo todos los campos correctos
+	        spanMsg.text("")
+	        
+			$.post("webServiceUsers/userLogin", { email: $("#email").val().trim(), pass: $("#pass").val().trim() } ).done(function(res) {
+				if (res.split(", ")[0] == "ok") {
+					nombre_login = res.split(", ")[1];
+					$("#mensaje_login").html("Identificado como: " + nombre_login)
+					
+					if ( $("#recordar_datos").prop('checked') ) {
+						// si esto se cumple es que se dejo activado el checkbox de recordar datos
+						Cookies.set("email", $("#email").val(), {expires: 100} )
+						Cookies.set("pass", $("#pass").val(), {expires: 100} )
+						Cookies.set("username", nombre_login, {expires: 100} )
+					}
+					
+				} else {
+					// El usuario no ha introducido datos válidos
+					alert(res)
 				}
 				
-			} else {
-				// El usuario no ha introducido datos válidos
-				alert(res)
-			}
-			
-		}) // end post y .done
+			}) // end post y .done	        
+	        
+	    } else {
+	        spanMsg.text("Rellene correctamente todos los campos.")
+	    }		
 		
 		// evitar envio de form, todo el cliente se gestiona con javascript
 		e.preventDefault()
