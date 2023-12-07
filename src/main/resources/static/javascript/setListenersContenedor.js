@@ -32,7 +32,8 @@ en el momento de la vinculación del evento, el evento no se asociará correctam
 //// Clicks dentro de plantilla movies:
 
 // Click en comprar
-$("#contenedor").on("click", ".enlace_comprar_listado_principal", async function() {
+$("#contenedor").on("click", ".enlaceComprarProducto", async function() {
+	let modal = $("#myModal");	
 	let id_producto = $(this).attr("id-producto");
 	let existeUsuario = await existeUsuarioEnSesion()
 	
@@ -47,7 +48,7 @@ $("#contenedor").on("click", ".enlace_comprar_listado_principal", async function
 		})
 	
 	} else {
-		alert("Tienes que identificarte para poder comprar productos.");
+		modal.addClass("active");
 	}
 });
 

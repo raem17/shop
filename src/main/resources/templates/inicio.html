@@ -2,55 +2,201 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/css/stylesTextField.css}" />
+	
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="recursos/css/bootstrap.min.css"/>
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="recursos/css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="recursos/css/slick-theme.css"/>
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="recursos/css/nouislider.min.css"/>
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="recursos/css/font-awesome.min.css">
+    <!-- Custom stylesheet -->
+    <link type="text/css" rel="stylesheet" href="recursos/css/style.css"/>	
+    
+    <!-- Estilos propios -->
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<link rel="stylesheet" type="text/css" href="css/stylesTextField.css" />    
+	
 	<title>Inicio</title>
 </head>
 
 <body>
 
-	<header>
-		<h2>Bienvenido a la parte pública de la tienda</h2>
-		<a href="admin/inicio">Acceso a administración</a>
-		
-		<div id="mensaje_login" style="margin: 1rem">Usuario no identificado</div>
-		<!-- Contenedor para el widget de Google Translate -->
-	    <div id="google_translate_element" style="width: fit-content;"></div>		
-	</header>
-	
-	<nav>
-		<a href="#" id="inicio" >Inicio</a>	
-		<a href="#" id="movies" >Listado de películas</a>	
-		<a href="#" id="registrarme" >Registro</a>	
-		<a href="#" id="login" >Iniciar sesión</a>	
-		<a href="#" id="#" >Ver mis pedidos</a>	
-		<a href="#" id="#" >Mis datos</a>	
-		<a href="#" id="logout" >Cerrar sesión</a>	
-		<a href="#" id="carrito" >Carrito</a>	
-	</nav>
+    <!-- HEADER -->
+    <header>
+        <!-- MAIN HEADER -->
+        <div id="header">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <!-- LOGO -->
+                    <div class="col-md-3">
+                        <div class="header-logo">
+                            <a href="#" class="logo">
+                                <img src="recursos/img/logo.png" alt="logo" id="logoTienda">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /LOGO -->
+
+                    <!-- SEARCH BAR -->
+                    <div class="col-md-6">
+                        <div class="header-search searchBar">
+                            <form>
+                                <input class="input" placeholder="Busca aquí" id="searchTitle">
+                                <button class="search-btn" id="buttonSearchMovie">Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /SEARCH BAR -->
+
+                    <!-- ACCOUNT -->
+                    <div class="col-md-3 clearfix">
+                        <div class="header-ctn">
+                            <!-- My account -->
+                            <div>
+                                <a href="#" id="account">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span>Mi cuenta</span>
+                                </a>
+
+                                <div id="user-menu">
+
+                                    <div class="user-header">
+                                        <div class="avatar_and_close">
+                                            <div class="avatar-container">
+                                                <img id="userAvatar" src="" alt="">
+                                            </div>
+
+                                            <i class="fa fa-close" id="close-user-menu"></i>
+                                        </div>
+
+
+                                        <p id="userName"></p>                                            
+                                    </div>
+
+                                    <div class="user-options">
+                                        <a href="#">Mis datos</a>
+                                        <a href="#">Mis pedidos</a>
+                                    </div>
+
+                                    <div class="log-out" id="logout">
+                                        <i class="fa fa-sign-out"></i>
+                                        <a href="#">Cerrar sesión</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- /My account -->
+                            
+                            <!-- Modal -->
+							<div id="myModal" class="modal">
+							  <div class="modal-content">
+							    <i class="close fa fa-close" id="closeModalBtn"></i>
+							    
+							    <h2>No estás identificado.</h2>
+							    
+							    <div class="boxInModal">
+								    <a href="#" class="btn btn-primary" id="login">Iniciar sesión</a>
+								    <a href="#" class="btn btn-primary" id="registrarme">Registrarse</a>									
+								</div>
+							  </div>
+							</div>                            
+                            <!-- /Modal -->                            
+
+                            <!-- Cart -->
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" id="cart" data-toggle="dropdown" aria-expanded="true">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Mi carrito</span>
+                                    <div class="qty">3</div>
+                                </a>
+                            </div>
+                            <!-- /Cart -->
+                        </div>
+                    </div>
+                    <!-- /ACCOUNT -->
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- /MAIN HEADER -->
+    </header>
+    <!-- /HEADER -->	
+    
+	<!-- Contenedor para el widget de Google Translate -->
+    <div id="google_translate_element"></div>	    
 	
 	<!-- Contenedor de plantillas Mustache -->
-	<div id="contenedor"></div>
+	<div id="contenedor"></div>	
+	
+	<!-- FOOTER -->
+	<footer id="footer">
+		<!-- top footer -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-3 col-xs-6">
+						<div class="footer">
+							<h3 class="footer-title">About Us</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+							<ul class="footer-links">
+								<li><a href="admin/inicio"><i class="fa fa-lock"></i>Acceso a administración</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="clearfix visible-xs"></div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /top footer -->
+
+		<!-- bottom footer -->
+		<div id="bottom-footer" class="section">
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<ul class="footer-payments">
+							<li><i class="fa fa-cc-visa"></i></li>
+							<li><i class="fa fa-cc-mastercard"></i></li>
+							<li><i class="fa fa-cc-amex"></i></li>
+						</ul>
+						<span class="copyright">
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+						</span>
+					</div>
+				</div>
+					<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /bottom footer -->
+	</footer>
+	<!-- /FOOTER -->	
+	
+	
+	
+	
+	
+	
 	
 	<!-- Librerías -->
 	<script src="librerias_js/jquery.js"></script>
 	<script src="librerias_js/mustache.js"></script>
 	<script src="librerias_js/js.cookie.min.js"></script>
 	
-	<!-- Scripts -->
-	<script src="javascript/globales.js"></script>
-	<script src="javascript/funciones.js"></script>
-	<script src="javascript/carga_plantillas.js"></script>
-	<script src="javascript/setListenersMenu.js"></script>
-	<script src="javascript/setListenersContenedor.js"></script>
-	<script src="javascript/funcionesCheckout.js"></script>
-	
-	<script>
-		mostrar_movies()
-		gestionarSesionUsuario();
-		googleTranslateElementInit();
-	</script>
-
     <!-- Google Translate -->
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script type="text/javascript">
@@ -59,6 +205,32 @@
             new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'de,en,fr,pt,ca,it', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT, gaTrack: true, gaId: 'UA-12345678-XX'}, 'google_translate_element');
         }
     </script>
+    
+    <!-- Scripts para estilos importados -->
+    <script src="recursos/js/bootstrap.min.js"></script>
+    <script src="recursos/js/slick.min.js"></script>
+    <script src="recursos/js/nouislider.min.js"></script>
+    <script src="recursos/js/jquery.zoom.min.js"></script>
+    <script src="recursos/js/main.js"></script>	
+	
+	<!-- Scripts propios -->
+	<script src="javascript/globales.js"></script>
+	<script src="javascript/funciones.js"></script>
+	<script src="javascript/carga_plantillas.js"></script>
+	<script src="javascript/setListenersMenu.js"></script>
+	<script src="javascript/setListenersContenedor.js"></script>
+	<script src="javascript/funcionesCheckout.js"></script>
+
+	<!-- Funciones que se ejecutarán al cargar la página -->
+    <script>
+		gestionarModal()		
+		mostrar_movies()
+		gestionarSesionUsuario();
+		mostrarNombreUsuario()
+		mostrarAvatarUsurio()
+		
+		googleTranslateElementInit();
+	</script>
 
 </body>
 </html>

@@ -53,7 +53,7 @@ public class WebServiceUsers {
 		
 		if (u != null) {
 			request.getSession().setAttribute("usuario_identificado", u);
-			res = "ok, " + u.getFirst_name();
+			res = "ok" + ";" + String.valueOf(u.getId()) + ";" + u.getFirst_name(); 
 
 		} else {
 			res = "Email o pass incorrectos.";

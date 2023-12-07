@@ -10,6 +10,7 @@ function gestionarSesionUsuario() {
 		$.post("webServiceUsers/userLogin", { email: emailCookie, pass: passCookie } )
 		
 		nombre_login = Cookies.get("username")
+		userID = Cookies.get("id")
 	  	$("#mensaje_login").html("Identificado como: " + nombre_login)
 	  	
 	} else {
@@ -132,3 +133,34 @@ function mostrarSubtotalYTotalEnResumenPedido() {
 
     $('#totalPedido').text(total.toFixed(2));
 }
+
+function mostrarNombreUsuario() {
+	$("#userName").text(nombre_login)
+}
+
+function mostrarAvatarUsurio() {
+	$("#userAvatar").attr("src","showUserImage?id=" + userID);
+}
+
+function gestionarModal() {
+  let closeModalBtn = $("#closeModalBtn");
+  let modal = $("#myModal");
+
+  closeModalBtn.click(function () {
+    modal.removeClass("active")
+  });
+
+  $(window).click(function (event) {
+    if (event.target === modal[0]) {
+    	modal.removeClass("active")
+    }
+  });	
+}
+
+
+
+
+
+
+
+

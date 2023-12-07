@@ -1,9 +1,3 @@
-//usando jquery pedimos el contenido de inicio.html y se lo metemos 
-//a la variable plantillaInicio
-$.get("plantillas_mustache/inicio.html",function(data){
-	plantillaInicio = data;
-});
-
 $.get("plantillas_mustache/movies.html",function(data){
 	plantillaMovies = data;
 });

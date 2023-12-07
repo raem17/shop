@@ -102,7 +102,7 @@ public class Order {
     
     // Data from step 3
 	@Size(min = 1, max = 50, message = "El campo debe tener entre 1 y 50 caracteres.")
-	@Pattern(regexp = "[A-Za-z0-9 áéíóú´ÁÉÍÓÚñÑ\\-]+", message = "El campo solo puede contener letras, "
+	@Pattern(regexp = "[A-Za-z0-9 \\-_]+", message = "El campo solo puede contener letras, "
 			+ "números y los caracteres: -")
     private String cardType;  // Tipo de tarjeta
     

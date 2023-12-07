@@ -2,13 +2,16 @@
 // Clicks dentro de inicio.html (nav):
 //
 
-$("#inicio").click(function(){
-	$("#contenedor").html(plantillaInicio);
+$("#logoTienda").click(function(){
+	mostrar_movies()
 });
 
 $("#movies").click(mostrar_movies);
 
 $("#registrarme").click(function(){
+	let modal = $("#myModal")
+	modal.removeClass("active")
+	
 	$("#contenedor").html(plantillaRegistro);
 	
 	$("#form_registro_usuario").submit(function (e) {
@@ -87,6 +90,9 @@ $("#registrarme").click(function(){
 });
 
 $("#login").click(function() {
+	let modal = $("#myModal")
+	modal.removeClass("active")	
+	
 	$("#contenedor").html(plantillaLogin);
 	
 	$("#form_login").submit(function(e) {
@@ -115,8 +121,9 @@ $("#login").click(function() {
 	        spanMsg.text("")
 	        
 			$.post("webServiceUsers/userLogin", { email: $("#email").val().trim(), pass: $("#pass").val().trim() } ).done(function(res) {
-				if (res.split(", ")[0] == "ok") {
-					nombre_login = res.split(", ")[1];
+				if (res.split(";")[0] == "ok") {
+					userID = res.split(";")[1];
+					nombre_login = res.split(";")[2];
 					$("#mensaje_login").html("Identificado como: " + nombre_login)
 					
 					if ( $("#recordar_datos").prop('checked') ) {
@@ -124,7 +131,10 @@ $("#login").click(function() {
 						Cookies.set("email", $("#email").val(), {expires: 100} )
 						Cookies.set("pass", $("#pass").val(), {expires: 100} )
 						Cookies.set("username", nombre_login, {expires: 100} )
+						Cookies.set("id", userID, {expires: 100} )
 					}
+					
+					location.reload()				
 					
 				} else {
 					// El usuario no ha introducido datos válidos
@@ -143,7 +153,8 @@ $("#login").click(function() {
 	
 }) // end click login
 	
-$("#carrito").click(async function() {
+$("#cart").click(async function() {
+	let modal = $("#myModal");		
 	let existeUsuario = await existeUsuarioEnSesion()
 	
 	if (existeUsuario == "true") {
@@ -161,7 +172,7 @@ $("#carrito").click(async function() {
 		}) // end ajax y done
 		
 	} else {
-		alert("Identificate para acceder al carrito.")
+		modal.addClass("active");
 	}
 	
 }) // end carrito click
@@ -177,8 +188,39 @@ $("#logout").click(function name() {
 				Cookies.remove('email')
 				Cookies.remove('pass')
 				Cookies.remove('username')
+				Cookies.remove('id')
+				
+				location.reload()
 				
 			} // fin de if
 		} // fin de success
 	}) // fin de ajax
 })
+
+$("#account").click(async function() {
+  	let modal = $("#myModal");	
+	let existeUsuario = await existeUsuarioEnSesion()
+	
+	if (existeUsuario == "true") {
+    	$("#user-menu").addClass("toggle")
+		
+	} else {
+	    modal.addClass("active");
+	}	
+})
+
+$("#close-user-menu").click(function() {
+    $("#user-menu").removeClass("toggle")    
+}) 
+
+
+
+
+
+
+
+
+
+
+
+

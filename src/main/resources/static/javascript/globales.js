@@ -1,5 +1,4 @@
 //parte de carga de las plantillas en variables
-var plantillaInicio = "";
 var plantillaMovies = "";
 var plantillaRegistro = "";
 var plantillaLogin = "";
@@ -12,3 +11,4 @@ var plantillaCheckout_4 = ""
 
 // Variable nombre usuario si se identifica correctamente
 var nombre_login = ""
+var userID = ""
