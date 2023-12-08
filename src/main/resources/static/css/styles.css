@@ -70,7 +70,6 @@ body {
 
 /* Fin modal */
 
-
 div#user-menu {
   background-color: #FFFFFF;
   position: fixed;
@@ -175,7 +174,7 @@ div#user-menu > div.log-out:hover > a, div#user-menu > div.log-out:hover > i {
 }
 /* /Contenedor principal */
 
-/* Login */
+/* Forms */
 
 div.checkboxField {
   display: flex;
@@ -196,11 +195,7 @@ div.checkboxField> label {
   font-size: 1.25rem;
 }
 
-/* /Login */
-
-
-
-
+/* /Forms */
 
 /* Productos */
 div.resultsFound {
@@ -211,33 +206,73 @@ div.resultsFound {
 	font-size: 1.75rem;
 }
 
+div.product > div.product-img {
+	display: flex;
+	justify-content: center;
+	background-color: #FFFFFF;
+	padding: 2rem;
+}
 
+div.product > div.product-img:hover {
+	cursor: pointer;
+}
 
+div.product > div.product-img > img {
+	max-width: 80%;
+}
 
+div.pagination {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+}
 
+/* /Productos */
 
+/* Detalles producto */
 
+div#product-main-img > div.product-preview {
+	background-color: white;
+	box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
+	padding: 3rem;
+}
 
+div#product-imgs > div.product-preview {
+	background-color: white;
+	box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
+	padding: 3rem;
+}
 
+ul.product-tab-nav > li {
+	background-color: #F4F4F4 !important;
+}
 
+ul.product-details {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
 
+/* /Detalles producto */
 
+/* Media queries */
 
-
-
-
-
-
-
-
-
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 992px) {
     div#user-menu {
         width: 50%;
         border-right: 1px solid black;
     }
     
 	.modal-content {
-	  width: 30%;
+	  	width: 30%;
 	}    
+	
+	.col-md-4 {
+		display: flex;	
+		justify-content: center;
+	}
+	
+	.col-md-4 > div.product{
+		width: 80%;
+	}
 }

@@ -8,6 +8,7 @@ form.formBox {
   background-color: white;
   padding: 2rem;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 form.formBox > div {
@@ -116,4 +117,10 @@ form.formBox > div.submitFormBox > input {
 
 form.formBox > div.submitFormBox > p.submitErrorMsg {
   color: #B00020;
-}/*# sourceMappingURL=stylesTextField.css.map */
+}
+
+@media screen and (min-width: 768px) {
+	form.formBox {
+	  width: 40%;
+	}
+}

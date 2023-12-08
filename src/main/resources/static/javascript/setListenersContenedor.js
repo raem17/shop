@@ -53,7 +53,7 @@ $("#contenedor").on("click", ".enlaceComprarProducto", async function() {
 });
 
 // Click en ver detalles
-$("#contenedor").on("click", ".enlace_ver_detalles_movie", function() {
+$("#contenedor").on("click", ".verDetallesProducto", function() {
 	let id_producto = $(this).attr("id-producto");
 	
 	$.post("webServiceMovies/getMovieDetails", {id: id_producto}).done(function (res) {

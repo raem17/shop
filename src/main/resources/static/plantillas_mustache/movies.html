@@ -1,33 +1,36 @@
-<!-- lo siguiente es la forma de indicar a mustache
-de que haga lo indicado con cada elemento de un array recibido -->
-
 <div class="resultsFound">
 	<p>Resultados encontrados:</p>
 	<span id="movieTotalResults"></span>
 </div>
 
-{{#.}}
-<div class="card">
-    <img src="showMovieImage?id={{id}}">
-    <div class="card-desc">
-        <p>{{title}}</p>
-    
-    	<!-- Este ul podrá contener más datos -->
-        <ul>
-            <li>Sinopsis: {{synopsis}}.</li>
-            <li>Formato: {{format}}.</li>
-            <li>Precio: {{price}} €.</li>
-        </ul>
-        
-        <div class="movie-options">
-          	<a href="#" class="enlaceComprarProducto" id-producto="{{id}}" >Comprar</a>
-          	<a href="#" class="enlace_ver_detalles_movie" id-producto="{{id}}" >Ver detalles</a>
-      	</div>
-      	
-    </div>
-    
+<!-- store products -->
+<div class="row">
+	{{#.}}
+	<!-- product -->
+	<div class="col-md-4 col-xs-6">
+		<div class="product">
+			<div class="product-img verDetallesProducto" id-producto="{{id}}" alt="{{title}}">
+				<img src="showMovieImage?id={{id}}">
+			</div>
+			<div class="product-body">
+				<p class="product-category">{{format}}</p>
+				<h3 class="product-name verDetallesProducto" id-producto="{{id}}"><a href="#">{{title}}</a></h3>
+				<h4 class="product-price">{{price}} €</h4>
+				<div class="product-rating">
+				</div>
+				<div class="product-btns">
+					<button class="quick-view verDetallesProducto" id-producto="{{id}}"><i class="fa fa-eye"></i><span class="tooltipp">Ver detalles</span></button>
+				</div>
+			</div>
+			<div class="add-to-cart">
+				<button class="add-to-cart-btn enlaceComprarProducto" id-producto="{{id}}"><i class="fa fa-shopping-cart"></i>Añadir al carrito</button>
+			</div>
+		</div>
+	</div>
+	<!-- /product -->
+	{{/.}}
 </div>
-{{/.}}
+<!-- /store products -->
 
 <div class="pagination">
 	<a id="previousMovies" href="#">Anterior</a> 

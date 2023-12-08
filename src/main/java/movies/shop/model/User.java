@@ -164,4 +164,10 @@ public class User {
 		this.activated = activated;
 	}
 
+	@Override
+	public String toString() {
+		return "User [first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", pass=" + pass
+				+ ", id=" + id + ", avatarSize=" + avatar.getSize() + ", imageInBytesSize=" + imageInBytes.length + "]";
+	}
+
 }

@@ -2,11 +2,7 @@
 // Clicks dentro de inicio.html (nav):
 //
 
-$("#logoTienda").click(function(){
-	mostrar_movies()
-});
-
-$("#movies").click(mostrar_movies);
+$("#logoTienda").click(mostrar_movies)
 
 $("#registrarme").click(function(){
 	let modal = $("#myModal")
@@ -38,7 +34,9 @@ $("#registrarme").click(function(){
 	    if (errores == 0 && campoVacio == false) {
 	        // Aquí estaría la acción del botón teniendo todos los campos correctos
 	        spanMsg.text("")
-			let formulario = document.forms[0];
+	        // Hay que poner document.forms[1] porque sino guarda el formulario
+	        // del buscador de películas que ocupa la posición 0
+			let formulario = document.forms[1];
 			let formData = new FormData(formulario);
 			
 			// Crear un nuevo objeto FormData para almacenar los datos actualizados
@@ -72,7 +70,22 @@ $("#registrarme").click(function(){
 	            success: function() {
 	                // Manejar la respuesta del servidor
 	                alert("Te has registrado correctamente");
-	            },
+	                
+					$.post("webServiceUsers/userLogin", { email: $("#email").val().trim(), pass: $("#pass").val().trim() } ).done(function(res) {
+						if (res.split(";")[0] == "ok") {
+							userID = res.split(";")[1];
+							nombre_login = res.split(";")[2];
+							
+							Cookies.set("email", $("#email").val(), {expires: 100} )
+							Cookies.set("pass", $("#pass").val(), {expires: 100} )
+							Cookies.set("username", nombre_login, {expires: 100} )
+							Cookies.set("id", userID, {expires: 100} )
+							
+							location.reload()				
+						}
+					}) // end post y .done	
+	            }, // end success
+	            
 	            error: function() {
 	                // Manejar errores
 	                alert("No has podido registrarte, revisa tus datos.");
@@ -124,7 +137,6 @@ $("#login").click(function() {
 				if (res.split(";")[0] == "ok") {
 					userID = res.split(";")[1];
 					nombre_login = res.split(";")[2];
-					$("#mensaje_login").html("Identificado como: " + nombre_login)
 					
 					if ( $("#recordar_datos").prop('checked') ) {
 						// si esto se cumple es que se dejo activado el checkbox de recordar datos

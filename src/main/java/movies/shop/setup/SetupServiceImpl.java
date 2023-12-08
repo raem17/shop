@@ -76,6 +76,7 @@ public class SetupServiceImpl implements SetupService {
 		entityManager.persist(m2);
 		entityManager.persist(m3);
 		entityManager.persist(m4);
+		entityManager.persist(m5);
 	}
 	
 	private void createUsers() {

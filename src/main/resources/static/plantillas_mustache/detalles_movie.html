@@ -1,25 +1,97 @@
-<div class="card">
-    <img src="showMovieImage?id={{id}}">
-    <div class="card-desc">
-        <p>{{title}}</p>
-    
-        <ul>
-                <li>Sinopsis: {{synopsis}}.</li>
-                <li>Director: {{director}}.</li>
-                <li>País: {{country}}.</li>
-                <li>EAN: {{ean}}.</li>
-                <li>Editor/ra: {{editor}}.</li>
-			    <li>Año de lanzamiento: {{release_year}}.</li>
-			    <li>Género: {{genre}}.</li>
-			    <li>Formato: {{format}}.</li>
-			    <li>Duración: {{length_min}} min.</li>
-			    <li>Precio: {{price}} €.</li>
-        </ul>
-        
-        <div class="movie-options">
-          	<a href="#" class="enlaceComprarProducto" id-producto="{{id}}" >Comprar</a>
-      	</div>
-      	
-    </div>
-    
+<!-- SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<!-- Product main img -->
+			<div class="col-md-5 col-md-push-2">
+				<div id="product-main-img">
+					<div class="product-preview">
+						<img src="showMovieImage?id={{id}}" alt="">
+					</div>
+				</div>
+			</div>
+			<!-- /Product main img -->
+
+			<!-- Product thumb imgs -->
+			<div class="col-md-2  col-md-pull-5">
+				<div id="product-imgs">
+					<div class="product-preview">
+						<img src="showMovieExtra1?id={{id}}" alt="">
+					</div>
+
+					<div class="product-preview">
+						<img src="showMovieExtra2?id={{id}}" alt="">
+					</div>
+				</div>
+			</div>
+			<!-- /Product thumb imgs -->
+
+			<!-- Product details -->
+			<div class="col-md-5">
+				<div class="product-details">
+					<h2 class="product-name">{{title}}</h2>
+					<div>
+						<h3 class="product-price">{{price}} €</h3>
+					</div>
+
+					<div class="add-to-cart">
+						<button class="add-to-cart-btn enlaceComprarProducto" id-producto="{{id}}"><i class="fa fa-shopping-cart"></i>Añadir al carrito</button>
+					</div>
+
+				</div>
+			</div>
+			<!-- /Product details -->
+
+			<!-- Product tab -->
+			<div class="col-md-12">
+				<div id="product-tab">
+					<!-- product tab nav -->
+					<ul class="tab-nav product-tab-nav">
+						<li class="active"><a data-toggle="tab" href="#tab1">Sinopsis</a></li>
+						<li><a data-toggle="tab" href="#tab2">Detalles</a></li>
+					</ul>
+					<!-- /product tab nav -->
+
+					<!-- product tab content -->
+					<div class="tab-content">
+						<!-- tab1  -->
+						<div id="tab1" class="tab-pane fade in active">
+							<div class="row">
+								<div class="col-md-12">
+									<p>{{synopsis}}.</p>
+								</div>
+							</div>
+						</div>
+						<!-- /tab1  -->
+
+						<!-- tab2  -->
+						<div id="tab2" class="tab-pane fade in">
+							<div class="row">
+								<div class="col-md-12">
+									<ul class="product-details">
+						                <li>Director: {{director}}.</li>
+						                <li>País: {{country}}.</li>
+						                <li>EAN: {{ean}}.</li>
+						                <li>Editor/ra: {{editor}}.</li>
+									    <li>Año de lanzamiento: {{release_year}}.</li>
+									    <li>Género: {{genre}}.</li>
+									    <li>Formato: {{format}}.</li>
+									    <li>Duración: {{length_min}} min.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- /tab2  -->
+					</div>
+					<!-- /product tab content  -->
+				</div>
+			</div>
+			<!-- /product tab -->
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
 </div>
+<!-- /SECTION -->
