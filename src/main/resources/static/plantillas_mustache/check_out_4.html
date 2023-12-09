@@ -1,57 +1,82 @@
-<div>Resumen del pedido</div>
+<!-- Nota: se han reciclado estilos del carrito por falta de tiempo -->
 
-<div class="resumenPedido">
-	
-	<div class="productosPedido">
-		<p>Productos del pedido:</p>
-		
+<h2 class="cartTitle">Resumen del pedido</h2>
+
+<div class="cartContainer">
+	<div class="cartProducts">
 		{{#cartProducts}}
-			<div class="productoPedido">
-				<!-- Quitar style y darle estilos -->
-				<img style="height: 10rem;" src="showMovieImage?id={{movie_id}}">
-				<p>Título: {{title}} {{format}}</p>
-				<p class="precio" data-precio="{{movie_price}}">Precio unidad: {{movie_price}} €</p>
-				<p class="cantidad" data-cantidad="{{quantity}}">Cantidad: {{quantity}}</p>
-				
-				<p>Subtotal: <span class="subtotal"></span> €</p>
+		<div class="product">
+			<div class="imgContainer col1">
+				<img src="showMovieImage?id={{movie_id}}">
 			</div>
+			
+			<div class="col2">
+				<div class="TitleAndPriceContainer">
+					<p class="title">{{title}} {{format}}</p>
+					<span class="precio" data-price="{{movie_price}}">{{movie_price}} €</span>
+				</div>
+				
+				<div class="productOptions">
+					<div class="quantityBox">
+						<button class="restar"><i class="fa fa-minus"></i></button>
+						<span class="quantity" data-id="{{movie_id}}" data-quantity="{{quantity}}">{{quantity}}</span>
+						<button class="sumar"><i class="fa fa-plus"></i></button>
+					</div>
+					
+					<div class="subtotalBox">
+						<span>Subtotal:</span>
+						<span class="subtotal"></span>
+						<span>€</span>
+					</div>				
+				</div>				
+			</div>
+		</div>
 		{{/cartProducts}}
 		
-		<p>Total: <span id="totalPedido"></span> €</p>
+		<!-- Datos del pedido -->
+		<div class="datosEnvio datosPedido">
+			<h3>Datos de envío:</h3>
+			
+			<p>Nombre: {{firstName}}</p>
+			<p>Apellidos: {{lastName}}</p>
+			<p>Email: {{email}}</p>
+			<p>Teléfono: {{phoneNumber}}</p>
+			<p>Dirección: {{address}}</p>
+			<p>Detalles de direción: {{addressDetails}}</p>
+			<p>Código postal: {{postalCode}}</p>
+			<p>Localidad: {{town}}</p>
+			<p>Provincia: {{province}}</p>
+		</div>
+		
+		<div class="datosContacto datosPedido">
+			<h3>Datos de contacto:</h3>
+			
+			<p>Notas de envío: {{shippingNotes}}</p>
+			<p>Nombre de contacto: {{contactName}}</p>
+			<p>Teléfono de contacto: {{contactPhone}}</p>
+			<p>Email de contacto: {{contactEmail}}</p>
+		</div>
+		
+		<div class="datosPago datosPedido">
+			<h3>Datos de pago:</h3>
+			
+			<p>Tipo de tarjeta: {{cardType}}</p>
+			<p>Titular: {{cardHolder}}</p>
+			<p>Número: {{cardNumber}}</p>
+			<p>Caducidad: {{cardExpiration}}</p>
+		</div>			
 		
 	</div>
 	
-	<div class="datosEnvio">
-		<p>Datos de envío:</p>
+	<div class="cartSummary">
+		<h3>Resumen</h3>
 		
-		<p>Nombre: {{firstName}}</p>
-		<p>Apellidos: {{lastName}}</p>
-		<p>Email: {{email}}</p>
-		<p>Teléfono: {{phoneNumber}}</p>
-		<p>Dirección: {{address}}</p>
-		<p>Detalles de direción: {{addressDetails}}</p>
-		<p>Código postal: {{postalCode}}</p>
-		<p>Localidad: {{town}}</p>
-		<p>Provincia: {{province}}</p>
+		<div class="total" id="carritoTotalContainer">
+			<span>Total (impuestos incluidos):</span>
+			<span><span class="total" id="total"></span>€</span>
+		</div>
+		
+		<button class="btn btn-primary" id="boton_confirmar_pedido">Realizar pedido</button>
 	</div>
 	
-	<div class="datosContacto">
-		<p>Datos de contacto:</p>
-		
-		<p>Notas de envío: {{shippingNotes}}</p>
-		<p>Nombre de contacto: {{contactName}}</p>
-		<p>Teléfono de contacto: {{contactPhone}}</p>
-		<p>Email de contacto: {{contactEmail}}</p>
-	</div>
-	
-	<div class="datosPago">
-		<p>Datos de pago:</p>
-		
-		<p>Tipo de tarjeta: {{cardType}}</p>
-		<p>Titular: {{cardHolder}}</p>
-		<p>Número: {{cardNumber}}</p>
-		<p>Caducidad: {{cardExpiration}}</p>
-	</div>
-	
-	<button id="boton_confirmar_pedido">REALIZAR PEDIDO</button>
 </div>

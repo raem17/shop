@@ -92,9 +92,9 @@ function mostrar_movies(){
 function actualizarSubtotalYTotalEnCarrito() {
     let total = 0;
 
-    $('.producto').each(function() {
-        let cantidad = parseFloat($(this).find('.cantidad').data('cantidad'));
-        let precio = parseFloat($(this).find('.precio').data('precio'));
+    $('.product').each(function() {
+        let cantidad = parseFloat($(this).find('.quantity').data('quantity'));
+        let precio = parseFloat($(this).find('.precio').data('price'));
 
         let subtotal = cantidad * precio;
         $(this).find('.subtotal').text(subtotal.toFixed(2));
@@ -106,13 +106,13 @@ function actualizarSubtotalYTotalEnCarrito() {
 }
 
 function actualizarCantidadesCarritoEnBD() {
-	let spans = $(".cantidad");
+	let spans = $(".quantity");
 	
 	// Dejar el argumento index, sino da error
 	// Se actualiza la cantidad de cada producto
 	spans.each(function(index, span) {
 		let idMovie = $(span).data('id');
-	    let cantidad = $(span).data('cantidad');
+	    let cantidad = $(span).data('quantity');
 	    
 	    $.post("webServiceCart/updateProductQuantity", { movieID: idMovie, quantity: cantidad })
 	});
@@ -121,9 +121,9 @@ function actualizarCantidadesCarritoEnBD() {
 function mostrarSubtotalYTotalEnResumenPedido() {
     let total = 0;
 
-    $('.productoPedido').each(function() {
-        let cantidad = parseFloat($(this).find('.cantidad').data('cantidad'));
-        let precio = parseFloat($(this).find('.precio').data('precio'));
+    $('.product').each(function() {
+        let cantidad = parseFloat($(this).find('.quantity').data('quantity'));
+        let precio = parseFloat($(this).find('.precio').data('price'));
 
         let subtotal = cantidad * precio;
         $(this).find('.subtotal').text(subtotal.toFixed(2));
@@ -131,7 +131,7 @@ function mostrarSubtotalYTotalEnResumenPedido() {
         total += subtotal;
     });
 
-    $('#totalPedido').text(total.toFixed(2));
+    $('#total').text(total.toFixed(2));
 }
 
 function mostrarNombreUsuario() {

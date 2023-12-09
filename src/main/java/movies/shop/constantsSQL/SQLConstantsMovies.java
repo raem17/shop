@@ -13,7 +13,7 @@ public class SQLConstantsMovies {
 	public final static String GET_GENRES_FOR_DROPDOWN = "SELECT genres.id, genres.name, genres.description FROM genres order by id desc";
 
 	public static final String GET_CART_PRODUCTS = "SELECT movies.id AS movie_id, movies.title, "
-			+ "movies.price AS movie_price, cart_products.quantity FROM movies INNER JOIN cart_products ON movies.id "
+			+ "movies.price AS movie_price, cart_products.quantity, movies.format FROM movies INNER JOIN cart_products ON movies.id "
 			+ "= cart_products.movie_id AND cart_products.cart_id = :cart_id "
 			+ "ORDER BY cart_products.id ASC";
 

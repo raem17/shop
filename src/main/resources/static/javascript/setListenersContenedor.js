@@ -86,11 +86,11 @@ $("#contenedor").on("click", "#eliminarProducto", function() {
 
 // Clicks botones sumar o restar cantidades en carrito
 $("#contenedor").on("click", ".sumar", function() {
-    let cantidadElement = $(this).closest('.producto').find('.cantidad');
-    let cantidad = parseFloat(cantidadElement.data('cantidad'));
+    let cantidadElement = $(this).closest('.product').find('.quantity');
+    let cantidad = parseFloat(cantidadElement.data('quantity'));
     let nuevaCantidad = cantidad + 1
     
-    cantidadElement.data("cantidad", nuevaCantidad);
+    cantidadElement.data("quantity", nuevaCantidad);
     cantidadElement.text(nuevaCantidad.toString());
     
     actualizarSubtotalYTotalEnCarrito();
@@ -98,13 +98,13 @@ $("#contenedor").on("click", ".sumar", function() {
 });
 
 $("#contenedor").on("click", ".restar", function() {
-    let cantidadElement = $(this).closest('.producto').find('.cantidad');
-    let cantidad = parseFloat(cantidadElement.data('cantidad'));
+    let cantidadElement = $(this).closest('.product').find('.quantity');
+    let cantidad = parseFloat(cantidadElement.data('quantity'));
 
     if (cantidad > 1) {
 		let nuevaCantidad = cantidad - 1
 		
-	    cantidadElement.data("cantidad", nuevaCantidad);
+	    cantidadElement.data("quantity", nuevaCantidad);
 	    cantidadElement.text(nuevaCantidad.toString());
         
         actualizarSubtotalYTotalEnCarrito();

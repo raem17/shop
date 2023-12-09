@@ -174,7 +174,7 @@ function checkout_paso_3_aceptar(e) {
 			$("#boton_confirmar_pedido").click(function() {
 				$.ajax("webServiceOrders/step4", {
 					success: function(res) {
-						alert("Respuesta del servicio web: " + res)
+						alert(res)
 						mostrar_movies()
 					}
 				})

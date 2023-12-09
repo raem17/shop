@@ -1,35 +1,51 @@
-<div style="text-align: center;">Carrito de la compra</div>
+<h2 class="cartTitle">Carrito</h2>
 
-<main>
-
-	<div id="productos">
+<div class="cartContainer">
+	<div class="cartProducts">
 		{{#.}}
-	    <div class="producto">
-		    <label>Título: {{title}} {{format}}</label>
-			<img src="showMovieImage?id={{movie_id}}" height="40px"/>
-	        <span class="precio" data-precio="{{movie_price}}">Precio: {{movie_price}} &euro;</span>
-	        
-	        <label>Cantidad:</label>
-	       	<div>
-	            <button class="restar">-</button>
-	            <span class="cantidad" data-id="{{movie_id}}" data-cantidad="{{quantity}}">{{quantity}}</span>
-	            <button class="sumar">+</button>
-	        </div>
-	
-			<p>Subtotal: <span class="subtotal">0</span> €</p>
-	        
-	        <a href="#" id="eliminarProducto" idMovie="{{movie_id}}">Eliminar producto</a>
-	    </div>
-	    {{/.}}
+		<!-- Esto se repite -->
+		<div class="product">
+			<div class="imgContainer col1">
+				<img src="showMovieImage?id={{movie_id}}">
+			</div>
+			
+			<div class="col2">
+				<div class="TitleAndPriceContainer">
+					<p class="title">{{title}} {{format}}</p>
+					<span class="precio" data-price="{{movie_price}}">{{movie_price}} €</span>
+				</div>
+				
+				<div class="productOptions">
+					<div class="delete" id="eliminarProducto" idMovie="{{movie_id}}">
+						<i class="fa fa-trash"></i>
+					</div>
+					
+					<div class="quantityBox">
+						<button class="restar"><i class="fa fa-minus"></i></button>
+						<span class="quantity" data-id="{{movie_id}}" data-quantity="{{quantity}}">{{quantity}}</span>
+						<button class="sumar"><i class="fa fa-plus"></i></button>
+					</div>
+					
+					<div class="subtotalBox">
+						<span>Subtotal:</span>
+						<span class="subtotal"></span>
+						<span>€</span>
+					</div>				
+				</div>				
+			</div>
+
+		</div>
+		{{/.}}
 	</div>
 	
-	<div id="carritoTotalContainer">
-	    <span>Total:</span>
-	    <span id="total">0.00</span> <span> €</span>
+	<div class="cartSummary">
+		<h3>Resumen</h3>
+		
+		<div class="total" id="carritoTotalContainer">
+			<span>Total (impuestos incluidos):</span>
+			<span><span class="total" id="total"></span>€</span>
+		</div>
+		
+		<button class="btn btn-primary" id="realizar_pedido">Realizar pedido</button>
 	</div>
-
-</main>
-
-<div style="text-align: center;font-size: 1.5rem;padding: 0.5rem;">
-	<a href="#" id="realizar_pedido">Realizar pedido</a>
 </div>
