@@ -7,7 +7,7 @@
 <ul>
     <li>Java JDK 8 o superior</li>
     <li>Maven</li>
-    <li>XAMPP con SGBD MySql o MariaDB</li>
+    <li>XAMPP con SGBD MySQL o MariaDB</li>
 </ul>
 
 <h2>Configuración del Proyecto</h2>
