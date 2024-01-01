@@ -5,15 +5,13 @@
 
 <h2>Requisitos Previos</h2>
 <ul>
-    <li>Java JDK 8 o superior</li>
-    <li>Maven</li>
-    <li>XAMPP con SGBD MySQL o MariaDB</li>
+    <li>Java.</li>
+    <li>XAMPP.</li>
+    <li>IDE para Java (por ejemplo, IntelliJ IDEA, Eclipse JEE).</li>
 </ul>
 
 <h2>Configuración del Proyecto</h2>
 <ol>
-    <li>Asegúrate de tener instalado el JDK 8 en tu sistema.</li>
-    <li>Descarga e instala Xampp para configurar un servidor local con MySQL.</li>
     <li>Inicia Xampp y asegúrate de que el servidor MySQL esté en ejecución.</li>
     <li>Abre tu entorno de desarrollo (por ejemplo, IntelliJ IDEA, Eclipse JEE).</li>
     <li>Importa el proyecto como un Maven Project.</li>
